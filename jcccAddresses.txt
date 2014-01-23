@@ -1,0 +1,84 @@
+Industrial Training Center, 12345 College Blvd, Overland Park, KS 66210
+(38.9225006, -94.73179490000001)
+
+Billington Library, Overland Park, KS 66210
+(38.924214, -94.72767190000002)
+
+Carlsen Center,Overland Park, KS 66210
+(38.9252624, -94.7279145)
+
+Regineer Center at JCCC,Overland Park, KS 66210
+(38.9248556, -94.72767190000002)
+
+Office and Classroom Bldg,Overland Park,KS 66210
+(38.9245613,-94.728429)
+
+Classroom Laboratory Building,Overland Park,KS 66210
+(38.9233935, -94.7278336)
+
+Science Building,Overland Park,KS 66210
+(38.9237222, -94.72876329999997)
+
+Hospitality and Culinary Academy,KS 66210
+(38.9230872,-94.72655580000003)
+
+Galileos Pavilion,KS 66210
+(38.9233574, -94.7292281)
+
+Student Center,KS 66210
+(38.9245847, -94.73058229999998)
+
+Campus Services Bldg,KS 66210
+(38.9231457, -94.72993550000001)
+
+Arts and Technology Bldg,KS 66210
+(38.9231911,-94.7308248)
+
+
+Welding Lab Bldg,KS 66210
+(38.9221687, -94.73094609999998)
+
+Gymnasium,KS 66210
+(38.9240505, -94.73171409999998)
+
+General Education Bldg,KS 66210
+(38.924214, -94.7292281)
+
+College Commons Building,KS 66210
+(38.9245613,-94.72993550000001)
+
+Nerman Museum of Contemporary Art,KS 66210
+(38.924852, -94.72682399999997)
+
+Horticultural Science Center,KS 66210
+(38.9237438, -94.73527139999999)
+
+Police Academy,KS 66210
+(38.924395, -94.73527139999999)
+
+Hiersteiner Child Development Center, KS 66210
+(38.9233574,-94.73527139999999)
+
+Warehouse,KS 66210
+var warehouse = new google.maps.LatLng(38.924750, -94.73527139999999);
+
+ATB   | Arts and Technology Building *
+CC    | Carlsen Center *
+CLB   | Classroom Laboratory Building *
+COM   | College Commons Building *
+CSB   | Campus Services Building *
+GEB   | General Education Building *
+GYM   | Gymnasium *
+HCA   | Hospitality and Culinary Academy *
+HCDC  | Hiersteiner Child Development Center *
+HSC   | Horticultural Science Center
+ITC   | Industrial Training Center *
+LIB   | Billington Library *
+NMOCA | Nerman Museum of Contemporary Art *
+OCB   | Office and Classroom Building *
+PA    | Police Academy *
+RC    | Regnier Center *
+SC    | Student Center *
+SCI   | Science Building *
+WLB   | Welding Lab Building *
+GP    | Galileo Pavilion *
