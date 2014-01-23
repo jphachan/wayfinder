@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <style type="text/css">
+
+      html { 
+        height: 100%; 
+      }
+
+      body { 
+        height: 100%; 
+        margin: 0; 
+        padding: 0;
+      }
+
+      #map-canvas { 
+        height: 100%;
+        width: 70%;
+        margin-top: 10px;
+        margin-right: 10px;
+        margin-left: 10px;
+        float:left;
+      }
+
+      aside{
+        float:right;
+        width: 25%;
+
+      }
+
+      aside h1{
+        color:black;
+        margin-right: 10px;
+      }
+
+
+    </style>
+
+    <script type="text/javascript"
+      src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyAXm4i-f_G5gFL-8YvXCFXUt_MMhbhGV2M&sensor=true">
+    </script>
+
+    <script type="text/javascript">
+
+      var directionsDisplay;
+      var directionsService = new google.maps.DirectionsService();
+
+      function initialize() {
+        directionsDisplay = new google.maps.DirectionsRenderer();
+
+        var myLatlng = new google.maps.LatLng(38.9225006, -94.73179490000001);
+        var myLatlng_two = new google.maps.LatLng(38.924214, -94.72767190000002);
+        var Carlsen_center = new google.maps.LatLng(38.9252624, -94.7279145);
+        var Regineer_center = new google.maps.LatLng(38.9243700, -94.72684989999999);
+        var Office = new google.maps.LatLng(38.9245613,-94.728429);
+        var Classroom_lab = new google.maps.LatLng(38.9233935, -94.7278336);
+        var science = new google.maps.LatLng(38.9237222, -94.72876329999997);
+        var Hospitality = new google.maps.LatLng(38.9230872,-94.72655580000003);
+        var Galileo = new google.maps.LatLng(38.9233574, -94.7292281);
+        var Student_center = new google.maps.LatLng(38.9245847, -94.73058229999998);
+        var Campus_services = new google.maps.LatLng(38.9231457, -94.72993550000001);
+        var art_tech = new google.maps.LatLng(38.9231911,-94.7308248);
+        var welding_lab = new google.maps.LatLng(38.9221687, -94.73094609999998);
+        var gymnasium = new google.maps.LatLng(38.9240505, -94.73171409999998);
+        var general_edu = new google.maps.LatLng(38.924214, -94.7292281);
+        var commons = new google.maps.LatLng(38.9245613,-94.72993550000001);
+        var museum = new google.maps.LatLng(38.924852, -94.72682399999997);
+        var horticultural = new google.maps.LatLng(38.9237438, -94.73527139999999);
+        var police = new google.maps.LatLng(38.924395, -94.73527139999999);
+        var child_development = new google.maps.LatLng(38.9232574,-94.73527139999999);
+        
+
+
+        var mapOptions = {
+          center: new google.maps.LatLng(38.9248956, -94.72684989),
+          zoom: 17
+        };
+        var map = new google.maps.Map(document.getElementById("map-canvas"),
+            mapOptions);
+
+        directionsDisplay.setMap(map);
+
+         var marker = new google.maps.Marker({
+          position: myLatlng,
+          map: map,
+          title: 'Industrial Training Center'
+          });
+
+          var marker_two = new google.maps.Marker({
+          position: myLatlng_two,
+          map: map,
+          title: 'Billington Library'
+          });
+
+          var cc = new google.maps.Marker({
+          position: Carlsen_center,
+          map: map,
+          title: 'Carlsen Center'
+          });
+
+          var rc = new google.maps.Marker({
+          position: Regineer_center,
+          map: map,
+          title: 'Regineer Center'
+          });
+
+          var rc = new google.maps.Marker({
+          position: Office,
+          map: map,
+          title: 'Office and Classroom Bldg'
+          });
+
+          var clb = new google.maps.Marker({
+          position: Classroom_lab,
+          map: map,
+          title: 'Regineer Center'
+          });
+
+          var sc = new google.maps.Marker({
+          position: science,
+          map: map,
+          title: 'Science Building'
+          });
+
+          var hca = new google.maps.Marker({
+          position: Hospitality,
+          map: map,
+          title: 'Hospitality and Culinary Academy'
+          });
+
+          var gp = new google.maps.Marker({
+          position: Galileo,
+          map: map,
+          title: 'Galileos Pavilion'
+          });
+
+          var stuc = new google.maps.Marker({
+          position: Student_center,
+          map: map,
+          title: 'Student Center'
+          });
+
+          var camser = new google.maps.Marker({
+          position: Campus_services,
+          map: map,
+          title: 'Campus Services Bldg'
+          });
+
+          var art = new google.maps.Marker({
+          position: art_tech,
+          map: map,
+          title: 'Arts and Technology Bldg'
+          });
+
+          var welding = new google.maps.Marker({
+          position: welding_lab,
+          map: map,
+          title: 'Welding Lab Bldg'
+          });
+
+          var gym = new google.maps.Marker({
+          position: gymnasium,
+          map: map,
+          title: 'Gymnasium'
+          });
+
+          var geb = new google.maps.Marker({
+          position: general_edu,
+          map: map,
+          title: 'General Education Building'
+          });
+
+          var college_commons = new google.maps.Marker({
+          position: commons,
+          map: map,
+          title: 'College Commons Building'
+          });
+
+          var nmoca = new google.maps.Marker({
+          position: museum,
+          map: map,
+          title: 'Nerman Museum of Contemporary Art'
+          });
+
+          var hsc = new google.maps.Marker({
+          position: horticultural,
+          map: map,
+          title: 'Horticultural Science Center'
+          });
+
+          var pa = new google.maps.Marker({
+          position: police,
+          map: map,
+          title: 'Police Academy'
+          });
+
+          var hcdc = new google.maps.Marker({
+          position: child_development,
+          map: map,
+          title: 'Hiersteiner Child Development Center'
+          });
+
+      }
+
+      function calcRoute(){
+         var start = document.getElementById('start').value;
+         var end = document.getElementById('end').value;
+          var request = {
+              origin:start,
+              destination:end,
+              travelMode: google.maps.TravelMode.WALKING
+          };
+          directionsService.route(request, function(response, status) {
+          if (status == google.maps.DirectionsStatus.OK) {
+              directionsDisplay.setDirections(response);
+             }
+           });
+
+         }
+
+      google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
+    
+  </head>
+  <body>
+    <div id="map-canvas"/>
+    </div>
+
+    <aside>
+            <h1 class="center">Building to Building Navigation</h1>
+            <b>Start:</b>
+            <br>
+            <select id="start">
+                <option value="38.9252624, -94.7279145">Carlsen Center / CC</input>
+                <option value="38.924214, -94.7292281">General Education Building / GEB</input>
+                <option value="38.9243700, -94.72684989999999">Regineer Center/ RC</input>
+                <option value="38.9245847, -94.73058229999998">Student Center / SC</input>
+                <option value="38.924214, -94.72767190000002">Billington Library / LIB</input>
+                <option value="38.9233935, -94.7278336">Classroom Laboratory Building / CLB</input>
+                <option value="38.9230872,-94.72655580000003">Hospitality and Culinary Academy / HCA</input>
+                <option value="38.9237222, -94.72876329999997">Science Building / SCI</input>
+                <option value="38.9233574, -94.7292281">Galileo's Pavilion / GP</input>
+                <option value="38.9245613,-94.728429">Office and Classroom BLD / OCB</input>
+                <option value="38.9240505, -94.73171409999998">Gymnasium / GYM</input>
+                <option value="38.9231911,-94.7308248">Arts and Technology Bldg / ATB</input>
+                <option value="38.9225006, -94.73179490000001">Industrial Training Center / ITC</input>
+                <option value="38.9221687, -94.73094609999998">Welding Lab Bldg / WLB</input>
+                <option value="38.9245613,-94.72993550000001">College Commons Building / COM</input>
+                <option value="38.9231457, -94.72993550000001">Campus Services Building / CSB</input>
+                <option value="38.9232574,-94.73527139999999">Hiersteiner Child Development Center / HCDC</input>
+                <option value="38.924852, -94.72682399999997">Nerman Museum of Contemporary Art / NMOCA</input>
+                <option value="38.924395, -94.73527139999999">Police Academy / PA</input>
+            </select>
+              <br>
+              <b>End:</b>
+              <br>
+              <select id="end">
+                <option value="38.9252624, -94.7279145">Carlsen Center / CC</input>
+                <option value="38.924214, -94.7292281">General Education Building / GEB</input>
+                <option value="38.9243700, -94.72684989999999">Regineer Center/ RC</input>
+                <option value="38.9245847, -94.73058229999998">Student Center / SC</input>
+                <option value="38.924214, -94.72767190000002">Billington Library / LIB</input>
+                <option value="38.9233935, -94.7278336">Classroom Laboratory Building / CLB</input>
+                <option value="38.9230872,-94.72655580000003">Hospitality and Culinary Academy / HCA</input>
+                <option value="38.9237222, -94.72876329999997">Science Building / SCI</input>
+                <option value="38.9233574, -94.7292281">Galileo's Pavilion / GP</input>
+                <option value="38.9245613,-94.728429">Office and Classroom BLD / OCB</input>
+                <option value="38.9240505, -94.73171409999998">Gymnasium / GYM</input>
+                <option value="38.9231911,-94.7308248">Arts and Technology Bldg / ATB</input>
+                <option value="38.9225006, -94.73179490000001">Industrial Training Center / ITC</input>
+                <option value="38.9221687, -94.73094609999998">Welding Lab Bldg / WLB</input>
+                <option value="38.9245613,-94.72993550000001">College Commons Building / COM</input>
+                <option value="38.9231457, -94.72993550000001">Campus Services Building / CSB</input>
+                <option value="38.9232574,-94.73527139999999">Hiersteiner Child Development Center / HCDC</input>
+                <option value="38.924852, -94.72682399999997">Nerman Museum of Contemporary Art / NMOCA</input>
+                <option value="38.924395, -94.73527139999999">Police Academy / PA</input>
+            </select>
+            <br>
+            <input type="submit" onclick="calcRoute();">
+          
+    </aside>
+
+  </body>
+</html>
