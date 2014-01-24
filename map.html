@@ -219,8 +219,32 @@
 
          }
          
-         function test(){
-           
+        function calcRouteW(){
+            var startTwo = document.getElementById('start').value;
+            var endTwo = document.getElementById('end').value;
+            var waypts = [];
+            var checkboxArray = document.getElementById('waypoints');
+            for (var i = 0; i < checkboxArray.length; i++) {
+                  if (checkboxArray.options[i].selected == true) {
+                          waypts.push({
+                          location:checkboxArray[i].value,
+                          stopover:true});
+                      }
+                  }
+
+             var request = {
+                  origin: startTwo,
+                  destination: endTwo,
+                  waypoints: waypts,
+                  optimizeWaypoints: true,
+                 travelMode: google.maps.TravelMode.WALKING
+             };
+
+              directionsService.route(request, function(response, status) {
+                 if (status == google.maps.DirectionsStatus.OK) {
+                      directionsDisplay.setDirections(response);
+                     }
+                  });
          }
          
          
@@ -285,7 +309,34 @@
             </select>
             <br>
             <input type="submit" onclick="calcRoute();">
-          
+            <br>
+            <br>
+            <b>WayPoints</b>
+            <br>
+            <select multiple id="waypoints">
+                <option value="38.9252624, -94.7279145">Carlsen Center / CC</input>
+                <option value="38.924214, -94.7292281">General Education Building / GEB</input>
+                <option value="38.9243700, -94.72684989999999">Regineer Center/ RC</input>
+                <option value="38.9245847, -94.73058229999998">Student Center / SC</input>
+                <option value="38.924214, -94.72767190000002">Billington Library / LIB</input>
+                <option value="38.9233935, -94.7278336">Classroom Laboratory Building / CLB</input>
+                <option value="38.9230872,-94.72655580000003">Hospitality and Culinary Academy / HCA</input>
+                <option value="38.9237222, -94.72876329999997">Science Building / SCI</input>
+                <option value="38.9233574, -94.7292281">Galileo's Pavilion / GP</input>
+                <option value="38.9245613,-94.728429">Office and Classroom BLD / OCB</input>
+                <option value="38.9240505, -94.73171409999998">Gymnasium / GYM</input>
+                <option value="38.9231911,-94.7308248">Arts and Technology Bldg / ATB</input>
+                <option value="38.9225006, -94.73179490000001">Industrial Training Center / ITC</input>
+                <option value="38.9221687, -94.73094609999998">Welding Lab Bldg / WLB</input>
+                <option value="38.9245613,-94.72993550000001">College Commons Building / COM</input>
+                <option value="38.9231457, -94.72993550000001">Campus Services Building / CSB</input>
+                <option value="38.9232574,-94.73527139999999">Hiersteiner Child Development Center / HCDC</input>
+                <option value="38.924852, -94.72682399999997">Nerman Museum of Contemporary Art / NMOCA</input>
+                <option value="38.924395, -94.73527139999999">Police Academy / PA</input>
+            </select>
+            <br>
+            <input type="submit" value="Submit With Waypoints" onclick="calcRouteW();">
+            <br>
     </aside>
 
   </body>
