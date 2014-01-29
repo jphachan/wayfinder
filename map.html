@@ -34,6 +34,10 @@
         margin-right: 10px;
       }
 
+      aside p{
+        color: black;
+      }
+
 
     </style>
 
@@ -45,163 +49,72 @@
 
       var directionsDisplay;
       var directionsService = new google.maps.DirectionsService();
+      var map;
+      var markerArray = [];
+
+       var posOne = new google.maps.LatLng(38.924717,-94.72815);
+        var posTwo = new google.maps.LatLng(38.924583,-94.727983);
+        var posThree = new google.maps.LatLng(38.924433, -94.728083);
+     
+      
 
       function initialize() {
+
+        detectBrowser();
         directionsDisplay = new google.maps.DirectionsRenderer();
 
-        var myLatlng = new google.maps.LatLng(38.9225006, -94.73179490000001);
-        var myLatlng_two = new google.maps.LatLng(38.924214, -94.72767190000002);
-        var Carlsen_center = new google.maps.LatLng(38.9252624, -94.7279145);
-        var Regineer_center = new google.maps.LatLng(38.9243700, -94.72684989999999);
-        var Office = new google.maps.LatLng(38.9245613,-94.728429);
-        var Classroom_lab = new google.maps.LatLng(38.9233935, -94.7278336);
-        var science = new google.maps.LatLng(38.9237222, -94.72876329999997);
-        var Hospitality = new google.maps.LatLng(38.9230872,-94.72655580000003);
-        var Galileo = new google.maps.LatLng(38.9233574, -94.7292281);
-        var Student_center = new google.maps.LatLng(38.9245847, -94.73058229999998);
-        var Campus_services = new google.maps.LatLng(38.9231457, -94.72993550000001);
-        var art_tech = new google.maps.LatLng(38.9231911,-94.7308248);
-        var welding_lab = new google.maps.LatLng(38.9221687, -94.73094609999998);
-        var gymnasium = new google.maps.LatLng(38.9240505, -94.73171409999998);
-        var general_edu = new google.maps.LatLng(38.924214, -94.7292281);
-        var commons = new google.maps.LatLng(38.9245613,-94.72993550000001);
-        var museum = new google.maps.LatLng(38.924852, -94.72682399999997);
-        var horticultural = new google.maps.LatLng(38.9237438, -94.73527139999999);
-        var police = new google.maps.LatLng(38.924395, -94.73527139999999);
-        var child_development = new google.maps.LatLng(38.9232574,-94.73527139999999);
+       
+
+
         
+          
 
 
         var mapOptions = {
-          center: new google.maps.LatLng(38.9248956, -94.72684989),
+          center: new google.maps.LatLng(38.9248956, -94.72700000),
           zoom: 17
         };
-        var map = new google.maps.Map(document.getElementById("map-canvas"),
+         map = new google.maps.Map(document.getElementById("map-canvas"),
             mapOptions);
 
         directionsDisplay.setMap(map);
 
-         var marker = new google.maps.Marker({
-          position: myLatlng,
+        var pointOne = new google.maps.Marker({
+          position: posOne,
           map: map,
-          title: 'Industrial Training Center'
+          title: 'Point 1'
           });
 
-          var marker_two = new google.maps.Marker({
-          position: myLatlng_two,
+        var pointTwo = new google.maps.Marker({
+          position: posTwo,
           map: map,
-          title: 'Billington Library'
+          title: 'Point 2'
           });
 
-          var cc = new google.maps.Marker({
-          position: Carlsen_center,
+        var pointThree = new google.maps.Marker({
+          position: posThree,
           map: map,
-          title: 'Carlsen Center'
+          title: 'Point 3'
           });
+        
+       
 
-          var rc = new google.maps.Marker({
-          position: Regineer_center,
-          map: map,
-          title: 'Regineer Center'
-          });
-
-          var rc = new google.maps.Marker({
-          position: Office,
-          map: map,
-          title: 'Office and Classroom Bldg'
-          });
-
-          var clb = new google.maps.Marker({
-          position: Classroom_lab,
-          map: map,
-          title: 'Regineer Center'
-          });
-
-          var sc = new google.maps.Marker({
-          position: science,
-          map: map,
-          title: 'Science Building'
-          });
-
-          var hca = new google.maps.Marker({
-          position: Hospitality,
-          map: map,
-          title: 'Hospitality and Culinary Academy'
-          });
-
-          var gp = new google.maps.Marker({
-          position: Galileo,
-          map: map,
-          title: 'Galileos Pavilion'
-          });
-
-          var stuc = new google.maps.Marker({
-          position: Student_center,
-          map: map,
-          title: 'Student Center'
-          });
-
-          var camser = new google.maps.Marker({
-          position: Campus_services,
-          map: map,
-          title: 'Campus Services Bldg'
-          });
-
-          var art = new google.maps.Marker({
-          position: art_tech,
-          map: map,
-          title: 'Arts and Technology Bldg'
-          });
-
-          var welding = new google.maps.Marker({
-          position: welding_lab,
-          map: map,
-          title: 'Welding Lab Bldg'
-          });
-
-          var gym = new google.maps.Marker({
-          position: gymnasium,
-          map: map,
-          title: 'Gymnasium'
-          });
-
-          var geb = new google.maps.Marker({
-          position: general_edu,
-          map: map,
-          title: 'General Education Building'
-          });
-
-          var college_commons = new google.maps.Marker({
-          position: commons,
-          map: map,
-          title: 'College Commons Building'
-          });
-
-          var nmoca = new google.maps.Marker({
-          position: museum,
-          map: map,
-          title: 'Nerman Museum of Contemporary Art'
-          });
-
-          var hsc = new google.maps.Marker({
-          position: horticultural,
-          map: map,
-          title: 'Horticultural Science Center'
-          });
-
-          var pa = new google.maps.Marker({
-          position: police,
-          map: map,
-          title: 'Police Academy'
-          });
-
-          var hcdc = new google.maps.Marker({
-          position: child_development,
-          map: map,
-          title: 'Hiersteiner Child Development Center'
-          });
+         
 
       }
+
+      function detectBrowser() {
+         var useragent = navigator.userAgent;
+         var mapdiv = document.getElementById("map-canvas");
+
+          if (useragent.indexOf('iPhone') != -1 || useragent.indexOf('Android') != -1 ) {
+            mapdiv.style.width = '100%';
+            mapdiv.style.height = '100%';
+          } else {
+            mapdiv.style.width = '70%';
+            mapdiv.style.height = '100%';
+          }
+        }
 
       function calcRoute(){
          var start = document.getElementById('start').value;
@@ -210,16 +123,20 @@
               origin:start,
               destination:end,
               travelMode: google.maps.TravelMode.WALKING
+
           };
+
           directionsService.route(request, function(response, status) {
           if (status == google.maps.DirectionsStatus.OK) {
+
               directionsDisplay.setDirections(response);
+              alert(response.routes[0].overview_path.length);
              }
            });
 
          }
-         
-        function calcRouteW(){
+
+         function calcRouteW(){
             var startTwo = document.getElementById('start').value;
             var endTwo = document.getElementById('end').value;
             var waypts = [];
@@ -246,9 +163,209 @@
                      }
                   });
          }
-         
-         
-         
+
+          
+          function alternate(){
+            var startThree = document.getElementById('start').value;
+            var endThree = document.getElementById('end').value;
+
+          var request = {
+              origin:startThree,
+              destination:endThree,
+              provideRouteAlternatives: true,
+              travelMode: google.maps.TravelMode.WALKING
+          };
+
+          directionsService.route(request, function(response, status) {
+          if (status == google.maps.DirectionsStatus.OK) {
+              directionsDisplay.setDirections(response);
+              alert(response.routes.length);
+             }
+           });
+         }
+
+         function enableAllMarkers(){
+        var myLatlng = new google.maps.LatLng(38.9225006, -94.73179490000001);
+        var myLatlng_two = new google.maps.LatLng(38.924214, -94.72767190000002);
+        var Carlsen_center = new google.maps.LatLng(38.9252624, -94.7279145);
+        var Regineer_center = new google.maps.LatLng(38.9243700, -94.72684989999999);
+        var Office = new google.maps.LatLng(38.9245613,-94.728429);
+        var Classroom_lab = new google.maps.LatLng(38.9233935, -94.7278336);
+        var science = new google.maps.LatLng(38.9237222, -94.72876329999997);
+        var Hospitality = new google.maps.LatLng(38.9230872,-94.72655580000003);
+        var Galileo = new google.maps.LatLng(38.9233574, -94.7292281);
+        var Student_center = new google.maps.LatLng(38.9245847, -94.73058229999998);
+        var Campus_services = new google.maps.LatLng(38.9231457, -94.72993550000001);
+        var art_tech = new google.maps.LatLng(38.9231911,-94.7308248);
+        var welding_lab = new google.maps.LatLng(38.9221687, -94.73094609999998);
+        var gymnasium = new google.maps.LatLng(38.9240505, -94.73171409999998);
+        var general_edu = new google.maps.LatLng(38.924214, -94.7292281);
+        var commons = new google.maps.LatLng(38.9245613,-94.72993550000001);
+        var museum = new google.maps.LatLng(38.924852, -94.72682399999997);
+        var horticultural = new google.maps.LatLng(38.9237438, -94.73527139999999);
+        var police = new google.maps.LatLng(38.924395, -94.73527139999999);
+        var child_development = new google.maps.LatLng(38.9232574,-94.73527139999999);
+        
+
+          var itc = new google.maps.Marker({
+          position: myLatlng,
+          map: map,
+          title: 'Industrial Training Center'
+          });
+          markerArray[0]=itc;
+
+          var bl = new google.maps.Marker({
+          position: myLatlng_two,
+          map: map,
+          title: 'Billington Library'
+          });
+          markerArray[1]=bl;
+
+          var cc = new google.maps.Marker({
+          position: Carlsen_center,
+          map: map,
+          title: 'Carlsen Center'
+          });
+          markerArray[2]=cc;
+
+          var rc = new google.maps.Marker({
+          position: Regineer_center,
+          map: map,
+          title: 'Regineer Center'
+          });
+          markerArray[3]=rc;
+
+          var clb = new google.maps.Marker({
+          position: Classroom_lab,
+          map: map,
+          title: 'Regineer Center'
+          });
+          markerArray[4]=clb;
+
+          var sc = new google.maps.Marker({
+          position: science,
+          map: map,
+          title: 'Science Building'
+          });
+          markerArray[5]=sc;
+
+          var hca = new google.maps.Marker({
+          position: Hospitality,
+          map: map,
+          title: 'Hospitality and Culinary Academy'
+          });
+          markerArray[6]=hca;
+
+          var gp = new google.maps.Marker({
+          position: Galileo,
+          map: map,
+          title: 'Galileos Pavilion'
+          });
+          markerArray[7]=gp;
+
+          var stuc = new google.maps.Marker({
+          position: Student_center,
+          map: map,
+          title: 'Student Center'
+          });
+          markerArray[8]=stuc;
+
+          var camser = new google.maps.Marker({
+          position: Campus_services,
+          map: map,
+          title: 'Campus Services Bldg'
+          });
+          markerArray[9]=camser;
+
+          var art = new google.maps.Marker({
+          position: art_tech,
+          map: map,
+          title: 'Arts and Technology Bldg'
+          });
+          markerArray[10]=art;
+
+          var welding = new google.maps.Marker({
+          position: welding_lab,
+          map: map,
+          title: 'Welding Lab Bldg'
+          });
+          markerArray[11]=welding;
+
+          var gym = new google.maps.Marker({
+          position: gymnasium,
+          map: map,
+          title: 'Gymnasium'
+          });
+          markerArray[12]=gym;
+
+          var geb = new google.maps.Marker({
+          position: general_edu,
+          map: map,
+          title: 'General Education Building'
+          });
+          markerArray[13]=geb;
+
+          var college_commons = new google.maps.Marker({
+          position: commons,
+          map: map,
+          title: 'College Commons Building'
+          });
+          markerArray[14]=college_commons;
+
+          var nmoca = new google.maps.Marker({
+          position: museum,
+          map: map,
+          title: 'Nerman Museum of Contemporary Art'
+          });
+          markerArray[15]=nmoca;
+
+          var hsc = new google.maps.Marker({
+          position: horticultural,
+          map: map,
+          title: 'Horticultural Science Center'
+          });
+          markerArray[16]=hsc;
+
+          var pa = new google.maps.Marker({
+          position: police,
+          map: map,
+          title: 'Police Academy'
+          });
+          markerArray[17]=pa;
+
+          var hcdc = new google.maps.Marker({
+          position: child_development,
+          map: map,
+          title: 'Hiersteiner Child Development Center'
+          });
+          markerArray[18]=hcdc;
+
+          var ocb = new google.maps.Marker({
+          position: Office,
+          map: map,
+          title: 'Office and Classroom Bldg'
+          });
+          markerArray[19]=ocb;
+
+         }
+
+         function disableAllMarkers(){
+
+          alert('number of current markers'+' '+markerArray.length);
+                for(var x=0;x<markerArray.length;x++){
+                    markerArray[x].setMap(null);
+                }          
+           }
+
+          function getHeading(){
+          
+           alert(google.maps.geometry.spherical.computeHeading(posOne,posTwo));
+          }
+
+          function calcDistance(){
+            alert(google.maps.geometry.spherical.computeDistanceBetween(posOne,posTwo)*3.28084+' '+'Ft');
+            alert(google.maps.geometry.spherical.computeDistanceBetween(posOne,posTwo));
+          }        
 
       google.maps.event.addDomListener(window, 'load', initialize);
     </script>
@@ -282,6 +399,9 @@
                 <option value="38.9232574,-94.73527139999999">Hiersteiner Child Development Center / HCDC</input>
                 <option value="38.924852, -94.72682399999997">Nerman Museum of Contemporary Art / NMOCA</input>
                 <option value="38.924395, -94.73527139999999">Police Academy / PA</input>
+                <option value="38.924717,-94.72815">Pos One</input>
+                <option value="38.924583,-94.727983">Pos Two</input>
+                <option value="38.92455,-94.728017">Pos Three</input>
             </select>
               <br>
               <b>End:</b>
@@ -306,6 +426,9 @@
                 <option value="38.9232574,-94.73527139999999">Hiersteiner Child Development Center / HCDC</input>
                 <option value="38.924852, -94.72682399999997">Nerman Museum of Contemporary Art / NMOCA</input>
                 <option value="38.924395, -94.73527139999999">Police Academy / PA</input>
+                <option value="38.924583,-94.727983">Pos Two</input>
+                <option value="38.92455,-94.728017">Pos Three</input>
+                <option value="38.924433, -94.728083">Pos Four</input>
             </select>
             <br>
             <input type="submit" onclick="calcRoute();">
@@ -333,10 +456,25 @@
                 <option value="38.9232574,-94.73527139999999">Hiersteiner Child Development Center / HCDC</input>
                 <option value="38.924852, -94.72682399999997">Nerman Museum of Contemporary Art / NMOCA</input>
                 <option value="38.924395, -94.73527139999999">Police Academy / PA</input>
+                
             </select>
             <br>
             <input type="submit" value="Submit With Waypoints" onclick="calcRouteW();">
             <br>
+            <br>
+            <input type="submit" value="Submit With alternate" onclick="alternate();">
+            <br>
+            <br>
+            <input type="submit" value="Enable All Markers" onclick="enableAllMarkers();">
+            <br>
+            <br>
+            <input type="submit" value="Disable All Markers" onclick="disableAllMarkers();">
+            <br>
+            <br>
+            <input type="submit" value="Get Heading" onclick="getHeading();">
+            <br>
+            <br>
+            <input type="submit" value="Get Distance" onclick="calcDistance();">
     </aside>
 
   </body>
