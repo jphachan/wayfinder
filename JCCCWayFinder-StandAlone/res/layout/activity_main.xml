@@ -53,4 +53,14 @@
         android:inputType="textPassword"
         android:maxLines="1" />
 
+    <TextView
+        android:id="@+id/ErrorText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/UserBox"
+        android:layout_centerHorizontal="true"
+        android:text="Your username and passowrd to not match!"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textSize="16sp" />
+
 </RelativeLayout>
