@@ -7,15 +7,20 @@ import android.view.Menu;
 
 public class MainOptions1 extends Activity {
 
+	public static String username, password;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main_options1);
-		Intent Reciever = getIntent();
 		
-		Reciever.getExtras().get("USERNAME");
+		//Handle IntentExtras
+		Intent Reciever = getIntent();
+		username = Reciever.getExtras().get("USERNAME").toString();
+		password = Reciever.getExtras().get("PASSWORD").toString();
+		
 	}
-
+ 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.

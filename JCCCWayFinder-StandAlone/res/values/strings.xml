@@ -9,5 +9,51 @@
     <string name="Password">Password</string>
     <string name="Username">Username</string>
     <string name="title_activity_main_options1">MainOptions1</string>
+    <string name="To">To:</string>
+    <string name="From">From:</string>
+
+    <string-array name="jcccLocationsTo">
+        <item>Arts and Technology Building</item>
+        <item>Billington Library</item>
+        <item>Carlson Center</item>
+        <item>Campus Services Building</item>
+        <item>Classroom Laboratory Building</item>
+        <item>Galileo\'s Pavilion</item>
+        <item>General Education Building</item>
+        <item>Gymnasium</item>
+        <item>Horticultural Science Center</item>
+        <item>Hospitality and Culinary Academy</item>
+        <item>Industrial Training Center</item>
+        <item>Office and Classroom Building</item>
+        <item>Police Academy</item>
+        <item>Regnier Center</item>
+        <item>Science Building</item>
+        <item>Student Center</item>
+        <item>Welding Lab Building</item>
+        <item>Yardly Hall</item>
+    </string-array>
+    <string-array name="jcccLocationsFrom">
+        <item>Current Location</item>
+        <item>Arts and Technology Building</item>
+        <item>Billington Library</item>
+        <item>Carlson Center</item>
+        <item>Campus Services Building</item>
+        <item>Classroom Laboratory Building</item>
+        <item>Galileo\'s Pavilion</item>
+        <item>General Education Building</item>
+        <item>Gymnasium</item>
+        <item>Horticultural Science Center</item>
+        <item>Hospitality and Culinary Academy</item>
+        <item>Industrial Training Center</item>
+        <item>Office and Classroom Building</item>
+        <item>Police Academy</item>
+        <item>Regnier Center</item>
+        <item>Science Building</item>
+        <item>Student Center</item>
+        <item>Welding Lab Building</item>
+        <item>Yardly Hall</item>
+    </string-array>
+
+    <string name="title_activity_map">MapActivity</string>
 
 </resources>
