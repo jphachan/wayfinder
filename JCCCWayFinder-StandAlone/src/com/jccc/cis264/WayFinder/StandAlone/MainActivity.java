@@ -192,7 +192,7 @@ class LoginRequest extends AsyncTask<String, Integer, Integer> {
 					Intent startOptions = new Intent(activity, MainOptions1.class);
 					MainActivity.pro_dialog.incrementProgressBy(1);
 					//put the transfered data needed in the next pane
-					startOptions.putExtra( "USERNAME", username);
+					startOptions.putExtra("USERNAME", username);
 					startOptions.putExtra("PASSWORD", password);
 					MainActivity.pro_dialog.incrementProgressBy(1);
 					//start the activity
@@ -201,7 +201,7 @@ class LoginRequest extends AsyncTask<String, Integer, Integer> {
 					activity.startActivity(startOptions);
 				}
 				else{
-					
+					//~!~ Occurs if the user entered a valid entry into the login fields and the passwords did not match.
 					//Display login error message
 					MainActivity.MyActivity.runOnUiThread(new Runnable() {
 						public void run() {
@@ -231,26 +231,35 @@ class LoginRequest extends AsyncTask<String, Integer, Integer> {
 					//End of alert dialog
 				}
 				
-			}catch(Exception e){
-				//if an exception happens, display the same dialog from before
-				MainActivity.pro_dialog.dismiss();
+			}catch(Exception e){				
+				//~!~Occurs if the user did not enter valid data in one of the login fields *OR* if the Username was not found in the database.
+				//Display login error message
 				MainActivity.MyActivity.runOnUiThread(new Runnable() {
 					public void run() {
+						//dismiss loading bar
 						MainActivity.pro_dialog.dismiss();
+						//create a new AlertDialog
 						AlertDialog.Builder Alert  = new AlertDialog.Builder(MainActivity.MyActivity);
+						//set message of alert
 						Alert.setMessage("Incorrect password or username");
+						//set Title of alert
 						Alert.setTitle("Login Failed!");
+						//set button text
 						Alert.setPositiveButton("OK", null);
 						Alert.setCancelable(true);
+						//show alert
 						Alert.create().show();
+						//script button handler
 						Alert.setPositiveButton("Ok",
-								new DialogInterface.OnClickListener() {
-									public void onClick(DialogInterface dialog, int which) {
-		
-									}
-								});
+							new DialogInterface.OnClickListener() {
+								public void onClick(DialogInterface dialog, int which) {
+									//button handler is left blank. Its only function is to close the alert, which is default.
+								}
+							}
+						);
 					}
 				});
+				//End of alert dialog
 			}
 		}catch(Exception e){
 			e.printStackTrace();
