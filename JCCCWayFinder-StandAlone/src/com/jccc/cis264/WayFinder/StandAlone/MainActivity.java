@@ -146,16 +146,15 @@ class LoginRequest extends AsyncTask<String, Integer, Integer> {
 			String username = MainActivity.userBox.getText().toString();
 			String password = MainActivity.passBox.getText().toString();
 			MainActivity.pro_dialog.incrementProgressBy(1);
-
-			//Initialize variables
-			String sql = "SELECT * FROM Accounts WHERE Username=\"" + username + "\";";
 			String tempSrcRead = "", tempStr = "";
 			MainActivity.pro_dialog.incrementProgressBy(1);
 
 			//Initialize and open the SQL Handler API
 			URL loginserver = null;
 			MainActivity.pro_dialog.incrementProgressBy(1);
-			loginserver = new URL("http://jcccwayfinder.site40.net/databaseHandler.php?sql=" + URLEncoder.encode(sql));
+			System.out.println("PreURL");
+			loginserver = new URL("http://jcccwayfinder.site40.net/databaseHandler.php?username=" + username + "&password=" + password);
+			System.out.println("PostURL");
 			MainActivity.pro_dialog.incrementProgressBy(1);
 			loginserver.openConnection().setReadTimeout(10000);
 			MainActivity.pro_dialog.incrementProgressBy(1);
@@ -181,28 +180,8 @@ class LoginRequest extends AsyncTask<String, Integer, Integer> {
 				tempStr = tempStr.replace("[", "");
 				tempStr = tempStr.replace("]", "");
 				MainActivity.pro_dialog.incrementProgressBy(1);
-				JSONObject ldata = new JSONObject(tempStr);
-				MainActivity.pro_dialog.incrementProgressBy(1);				
-				String tempPassword = (String) ldata.get("Password");
-				MainActivity.pro_dialog.incrementProgressBy(1);
-
-				//Open the functional portion of the application with the retrieved values.
-				if(password.equals(tempPassword)){
-					//Create a new intent used to open the next activity
-					Intent startOptions = new Intent(activity, MainOptions1.class);
-					MainActivity.pro_dialog.incrementProgressBy(1);
-					//put the transfered data needed in the next pane
-					startOptions.putExtra("USERNAME", username);
-					startOptions.putExtra("PASSWORD", password);
-					MainActivity.pro_dialog.incrementProgressBy(1);
-					//start the activity
-					MainActivity.pro_dialog.dismiss();
-
-					activity.startActivity(startOptions);
-				}
-				else{
-					//~!~ Occurs if the user entered a valid entry into the login fields and the passwords did not match.
-					//Display login error message
+				if(tempStr == ""){
+					System.out.println("EmptyReturn");
 					MainActivity.MyActivity.runOnUiThread(new Runnable() {
 						public void run() {
 							//dismiss loading bar
@@ -228,12 +207,29 @@ class LoginRequest extends AsyncTask<String, Integer, Integer> {
 							);
 						}
 					});
-					//End of alert dialog
+					//End of alert dialogs
 				}
-				
+				else{
+					JSONObject ldata = new JSONObject(tempStr);
+					System.out.println(ldata.length());
+
+						//Create a new intent used to open the next activity
+						Intent startOptions = new Intent(activity, MainOptions1.class);
+						MainActivity.pro_dialog.incrementProgressBy(1);
+						//put the transfered data needed in the next pane
+						startOptions.putExtra("USERNAME", username);
+						startOptions.putExtra("PASSWORD", password);
+						MainActivity.pro_dialog.incrementProgressBy(1);
+						//start the activity
+						MainActivity.pro_dialog.dismiss();
+
+						activity.startActivity(startOptions);
+					
+				}	
 			}catch(Exception e){				
 				//~!~Occurs if the user did not enter valid data in one of the login fields *OR* if the Username was not found in the database.
 				//Display login error message
+				e.printStackTrace();
 				MainActivity.MyActivity.runOnUiThread(new Runnable() {
 					public void run() {
 						//dismiss loading bar
