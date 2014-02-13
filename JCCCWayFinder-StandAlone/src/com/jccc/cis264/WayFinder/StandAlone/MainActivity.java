@@ -201,29 +201,38 @@ class LoginRequest extends AsyncTask<String, Integer, Integer> {
 					activity.startActivity(startOptions);
 				}
 				else{
+					
+					//Display login error message
 					MainActivity.MyActivity.runOnUiThread(new Runnable() {
 						public void run() {
-
+							//dismiss loading bar
 							MainActivity.pro_dialog.dismiss();
-							AlertDialog.Builder dlgAlert  = new AlertDialog.Builder(MainActivity.MyActivity);
-
-							dlgAlert.setMessage("Incorrect password or username");
-							dlgAlert.setTitle("Login Failed!");
-							dlgAlert.setPositiveButton("OK", null);
-							dlgAlert.setCancelable(true);
-							dlgAlert.create().show();
-
-							dlgAlert.setPositiveButton("Ok",
-									new DialogInterface.OnClickListener() {
-								public void onClick(DialogInterface dialog, int which) {
-
+							//create a new AlertDialog
+							AlertDialog.Builder Alert  = new AlertDialog.Builder(MainActivity.MyActivity);
+							//set message of alert
+							Alert.setMessage("Incorrect password or username");
+							//set Title of alert
+							Alert.setTitle("Login Failed!");
+							//set button text
+							Alert.setPositiveButton("OK", null);
+							Alert.setCancelable(true);
+							//show alert
+							Alert.create().show();
+							//script button handler
+							Alert.setPositiveButton("Ok",
+								new DialogInterface.OnClickListener() {
+									public void onClick(DialogInterface dialog, int which) {
+										//button handler is left blank. Its only function is to close the alert, which is default.
+									}
 								}
-							});
+							);
 						}
 					});
-
+					//End of alert dialog
 				}
+				
 			}catch(Exception e){
+				//if an exception happens, display the same dialog from before
 				MainActivity.pro_dialog.dismiss();
 				MainActivity.MyActivity.runOnUiThread(new Runnable() {
 					public void run() {
