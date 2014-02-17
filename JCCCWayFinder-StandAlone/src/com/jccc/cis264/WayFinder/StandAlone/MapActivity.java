@@ -1,8 +1,9 @@
 package com.jccc.cis264.WayFinder.StandAlone;
 
+import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.MapFragment;
+import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
@@ -13,27 +14,27 @@ import android.support.v4.app.FragmentActivity;
 
 @SuppressLint("NewApi")
 public class MapActivity extends FragmentActivity {
-
-
+	private GoogleMap map;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		//super.onCreate(savedInstanceState);
-		//setContentView(R.layout.activity_map);
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_map);
 
-        
-        // Get a handle to the Map Fragment
-        GoogleMap map = (((MapFragment) getFragmentManager().findFragmentById(R.id.map))).getMap();
+        if (GooglePlayServicesUtil.isGooglePlayServicesAvailable(getApplicationContext()) == 0)
+        {
+            map = ((SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map)).getMap();
+            map.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+            
+    		LatLng jccc = new LatLng(38.92356,-94.728327);
 
-        LatLng sydney = new LatLng(-33.867, 151.206);
+            map.setMyLocationEnabled(true);
+            map.moveCamera(CameraUpdateFactory.newLatLngZoom(jccc, 17));
 
-        map.setMyLocationEnabled(true);
-        map.moveCamera(CameraUpdateFactory.newLatLngZoom(sydney, 13));
-
-        map.addMarker(new MarkerOptions()
-                .title("Sydney")
-                .snippet("The most populous city in Australia.")
-                .position(sydney));
-        
+            map.addMarker(new MarkerOptions()
+                    .title("JCCC")
+                    .snippet("The most populous city in Australia.")
+                    .position(jccc));
+        }
 	}
 
 	@Override

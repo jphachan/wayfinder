@@ -24,6 +24,7 @@ public class MainActivity extends Activity {
 	public static ProgressDialog pro_dialog;
 	public static boolean LoginSuccessful;
 
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -32,8 +33,8 @@ public class MainActivity extends Activity {
 		MyActivity = this;
 		userBox = (TextView) findViewById(R.id.UserBox);
 		passBox = (TextView) findViewById(R.id.PassBox);
-		//Login button handler
-
+		
+		//GO button16 handler
 		final Button LoginButton = (Button) findViewById(R.id.LoginButton);
 		LoginButton.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {

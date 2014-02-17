@@ -32,6 +32,10 @@
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
             android:value="AIzaSyALmCq7a3Ft3beDug5JRe2ym521pgf54JQ" />
+        <meta-data
+            android:name="com.google.android.maps.v2.API_KEY"
+            android:value="AIzaSyCStDQjOoxy6p8thijvASmVxkUE5h--MjY" />
+
         <activity
             android:name="com.jccc.cis264.WayFinder.StandAlone.MainActivity"
             android:label="@string/app_name"
