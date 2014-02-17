@@ -3,7 +3,7 @@ package com.jccc.cis264.WayFinder.StandAlone;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.URL;
-import java.net.URLEncoder;
+import org.json.JSONObject;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.app.Activity;
@@ -136,7 +136,6 @@ public class MainActivity extends Activity {
 }
 
 class LoginRequest extends AsyncTask<String, Integer, Integer> {
-	@SuppressWarnings("deprecation")
 	@Override
 	protected Integer doInBackground(String... params) {
 		try{
@@ -210,6 +209,7 @@ class LoginRequest extends AsyncTask<String, Integer, Integer> {
 					//End of alert dialogs
 				}
 				else{
+					
 					JSONObject ldata = new JSONObject(tempStr);
 					System.out.println(ldata.length());
 
@@ -224,7 +224,7 @@ class LoginRequest extends AsyncTask<String, Integer, Integer> {
 						MainActivity.pro_dialog.dismiss();
 
 						activity.startActivity(startOptions);
-					
+						
 				}	
 			}catch(Exception e){				
 				//~!~Occurs if the user did not enter valid data in one of the login fields *OR* if the Username was not found in the database.

@@ -1,15 +1,39 @@
 package com.jccc.cis264.WayFinder.StandAlone;
 
-import android.os.Bundle;
-import android.app.Activity;
-import android.view.Menu;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 
-public class MapActivity extends Activity {
+import android.annotation.SuppressLint;
+import android.os.Bundle;
+import android.view.Menu;
+import android.support.v4.app.FragmentActivity;
+
+@SuppressLint("NewApi")
+public class MapActivity extends FragmentActivity {
+
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_map);
+		//super.onCreate(savedInstanceState);
+		//setContentView(R.layout.activity_map);
+
+        
+        // Get a handle to the Map Fragment
+        GoogleMap map = (((MapFragment) getFragmentManager().findFragmentById(R.id.map))).getMap();
+
+        LatLng sydney = new LatLng(-33.867, 151.206);
+
+        map.setMyLocationEnabled(true);
+        map.moveCamera(CameraUpdateFactory.newLatLngZoom(sydney, 13));
+
+        map.addMarker(new MarkerOptions()
+                .title("Sydney")
+                .snippet("The most populous city in Australia.")
+                .position(sydney));
+        
 	}
 
 	@Override
