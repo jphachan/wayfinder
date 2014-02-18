@@ -28,7 +28,7 @@ public class MapActivity extends FragmentActivity {
     		LatLng jccc = new LatLng(38.92356,-94.728327);
 
             map.setMyLocationEnabled(true);
-            map.moveCamera(CameraUpdateFactory.newLatLngZoom(jccc, 17));
+            map.moveCamera(CameraUpdateFactory.newLatLngZoom(jccc, 15));
 
             map.addMarker(new MarkerOptions()
                     .title("JCCC")
