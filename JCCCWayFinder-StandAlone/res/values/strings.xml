@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string translatable="false" name="app_name">JCCC WayFinder</string>
+    <string translatable="false" name="action_settings">Settings</string>
+    <string translatable="false" name="hello_world">Hello world!</string>
+    <string translatable="false" name="cancel">Cancel</string>
+    <string translatable="false" name="Login">Login</string>
+    <string translatable="false" name="Password">Password</string>
+    <string translatable="false" name="Username">Username</string>
+    <string translatable="false" name="title_activity_main_options1">MainOptions1</string>
+    <string translatable="false" name="To">To:</string>
+    <string translatable="false" name="From">From:</string>
+
+    <string-array translatable="false" name="jcccLocationsTo">
+        <item name="ATB">Arts and Technology Building</item>
+        <item name="BL">Billington Library</item>
+        <item name="CC">Carlson Center</item>
+        <item name="CCB">Campus Services Building</item>
+        <item name="CLB">Classroom Laboratory Building</item>
+        <item name="GP">Galileo\'s Pavilion</item>
+        <item name="GEB">General Education Building</item>
+        <item name="GYM">Gymnasium</item>
+        <item name="HSC">Horticultural Science Center</item>
+        <item name="HCA">Hospitality and Culinary Academy</item>
+        <item name="ITC">Industrial Training Center</item>
+        <item name="OCB">Office and Classroom Building</item>
+        <item name="PA">Police Academy</item>
+        <item name="RC">Regnier Center</item>
+        <item name="SCI">Science Building</item>
+        <item name="SC">Student Center</item>
+        <item name="WLB">Welding Lab Building</item>
+        <item name="YH">Yardly Hall</item>
+    </string-array>
+    <string-array translatable="false" name="jcccLocationsFrom">
+        <item>Current Location</item>
+        <item>Arts and Technology Building</item>
+        <item>Billington Library</item>
+        <item>Carlson Center</item>
+        <item>Campus Services Building</item>
+        <item>Classroom Laboratory Building</item>
+        <item>Galileo\'s Pavilion</item>
+        <item>General Education Building</item>
+        <item>Gymnasium</item>
+        <item>Horticultural Science Center</item>
+        <item>Hospitality and Culinary Academy</item>
+        <item>Industrial Training Center</item>
+        <item>Office and Classroom Building</item>
+        <item>Police Academy</item>
+        <item>Regnier Center</item>
+        <item>Science Building</item>
+        <item>Student Center</item>
+        <item>Welding Lab Building</item>
+        <item>Yardly Hall</item>
+    </string-array>
+
+    <string translatable="false" name="title_activity_map">MapActivity</string>
+
+</resources>
