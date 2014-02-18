@@ -4,7 +4,6 @@
 	<comment></comment>
 	<projects>
 		<project>google-play-services_lib</project>
-		<project>JCCCWayFinder</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
