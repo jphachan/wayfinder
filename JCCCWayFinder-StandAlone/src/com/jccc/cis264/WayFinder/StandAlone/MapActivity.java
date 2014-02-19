@@ -1,5 +1,6 @@
 package com.jccc.cis264.WayFinder.StandAlone;
 
+
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -16,10 +17,15 @@ import android.view.Menu;
 @SuppressLint("NewApi")
 public class MapActivity extends Activity {
 	private GoogleMap map;
+	private LatLng JcccCenter = new LatLng(38.92356,-94.728327),
+			CC = new LatLng(38.92356,-94.728327), 
+			OCB = new LatLng(38.9245029,-94.7285108);
+
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_map);
+		setContentView(R.layout.activity_map );
 
 		if (GooglePlayServicesUtil.isGooglePlayServicesAvailable(getApplicationContext()) == 0)
 		{
@@ -27,34 +33,26 @@ public class MapActivity extends Activity {
 			map = ((MapFragment) getFragmentManager().findFragmentById(R.id.map)).getMap();
 			map.setMapType(GoogleMap.MAP_TYPE_NORMAL);
 
-			LatLng jccc = new LatLng(38.92356,-94.728327);
-
 			map.setMyLocationEnabled(true);
-			map.moveCamera(CameraUpdateFactory.newLatLngZoom(jccc, 15));
+			map.moveCamera(CameraUpdateFactory.newLatLngZoom(JcccCenter, 15));
 
 			map.addMarker(new MarkerOptions()
 			.title("JCCC")
 			.snippet("The most populous city in Australia.")
-			.position(jccc));
+			.position(JcccCenter));
 
-			map.moveCamera(CameraUpdateFactory.newLatLngZoom(jccc, 15));
-
-			// Zoom in, animating the camera.
-			map.animateCamera(CameraUpdateFactory.zoomIn());
-
-			// Zoom out to zoom level 10, animating with a duration of 2 seconds.
-			map.animateCamera(CameraUpdateFactory.zoomTo(10), 2000, null);
-
+			
 			// Construct a CameraPosition focusing on Mountain View and animate the camera to that position.
 			CameraPosition cameraPosition = new CameraPosition.Builder()
-			.target(/*INSERT LOCATION HERE*/)      // Sets the center of the map to Mountain View
-			.zoom(17)                   // Sets the zoom
-			.bearing(90)                // Sets the orientation of the camera to east
-			.tilt(30)                   // Sets the tilt of the camera to 30 degrees
-			.build();                   // Creates a CameraPosition from the builder
-			map.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+			.target(CC)      // Sets the center of the map to Mountain View
+			.zoom(13)        // Sets the zoom
+			.bearing(90)     // Sets the orientation of the camera to east
+			.tilt(30)        // Sets the tilt of the camera to 30 degrees
+			.build();        // Creates a CameraPosition from the builder
 			
-			
+			map.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition), 2000, null);
+
+
 			//End Map Application~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 		}
 	}
