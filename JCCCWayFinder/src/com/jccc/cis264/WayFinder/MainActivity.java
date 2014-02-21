@@ -1,11 +1,14 @@
 package com.jccc.cis264.WayFinder;
 
 import android.os.Bundle;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.view.Menu;
+import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 
+@SuppressLint("SetJavaScriptEnabled")
 public class MainActivity extends Activity {
 
     @Override
@@ -16,10 +19,23 @@ public class MainActivity extends Activity {
         WebView webview = new WebView(this);
         WebSettings webSettings = webview.getSettings();
         webSettings.setJavaScriptEnabled(true);
-        setContentView(webview);
+        webSettings.setGeolocationEnabled(true);
+        webSettings.setLoadsImagesAutomatically(true);
+        webSettings.setBuiltInZoomControls(true);
+	    webSettings.setAppCacheEnabled(true);
+	    webSettings.setDatabaseEnabled(true);
+	    webSettings.setDomStorageEnabled(true);
+	    
+        webview.setWebChromeClient(new WebChromeClient() {
+        	public void onGeolocationPermissionsShowPrompt(String origin, android.webkit.GeolocationPermissions.Callback callback) 
+        	{ 
+        		callback.invoke(origin, true, false); 
+        	}
+        	});
+        webview.getSettings().setDatabasePath(STORAGE_SERVICE);
         
-        webview.loadUrl("https://raw2.github.com/jphachan/wayfinder/master/map.html");
-
+        setContentView(webview);
+        webview.loadUrl("http://students.jccc.edu/jphachan/map.html");
         //webview.loadData("https://raw2.github.com/jphachan/wayfinder/master/map.html", 
         //		 		 "text/html",
         //				 null);
