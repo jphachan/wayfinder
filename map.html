@@ -20,6 +20,12 @@
   </head>
   <body class="body">
 
+    <header class="header">
+
+        <img alt="Johnson County Community College" class="site-logo" height="50%" src="jccc-logo-450x64.png" width="50%">
+
+    </header>
+
   
 
     <div 
@@ -50,6 +56,7 @@
                 <option value="38.9232574,-94.73527139999999">Hiersteiner Child Development Center / HCDC</input>
                 <option value="38.924852, -94.72682399999997">Nerman Museum of Contemporary Art / NMOCA</input>
                 <option value="38.924395, -94.73527139999999">Police Academy / PA</input>
+                <option value="0">User Location</input>
             </select>
               <br>
               <b>End:</b>
@@ -115,8 +122,16 @@
          
             <input type="submit" value="Enable All Markers" onclick="enableAllMarkers();">
             <input type="submit" value="Disable All Markers" onclick="disableAllMarkers();">
-            <input type="submit" value="User Location" onclick="getLocation();">
-            <input type="submit" value="Place Current Spot Marker" onclick="placeLocMarker();">
+            <input type="submit" value="Current Pos Watch" onclick="getLocationUpdate();">
+            <input type="submit" value="Stop Watch" onclick="stopWatch();">
       </aside>
+
+      <aside class="btb-sidemenu_3" id="directions-panel">
+
+          <h1>Direction Panel</h1>
+
+
+      </aside>
+
   </body>
 </html>
