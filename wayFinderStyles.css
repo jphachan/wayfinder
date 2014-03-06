@@ -18,6 +18,9 @@
         
       }
 
+      
+
+
       .body {
        clear: both; 
        margin: 0 auto; 
@@ -46,7 +49,7 @@
         width: 22%;
         margin-left: 3%;
         background-color: grey;
-        margin-top: .5s%;
+        margin-top: 2%;
         
       }
 
@@ -77,12 +80,27 @@
         width: 22%;
         margin-right: 0.8%; 
         margin-top: 1%;
+        margin-bottom: 1%;
 
       }
 
       .btb-sidemenu_2 input{
         width: 100%;
+        margin-bottom: 2%;
       }
+
+
+       .btb-sidemenu_3{
+
+        margin-top: 1%;
+         margin-left: 3%;
+         float: left;
+         width: 47%;
+         height: 30%;
+         background-color: grey; 
+      }
+
+
 
 
      
@@ -114,6 +132,14 @@
 
       }
 
+      .header img{
+        
+        width: 100%;
+
+      }
+
+      
+
       #map-canvas { 
         float:left;
         border-top: solid thin black;
@@ -122,6 +148,7 @@
         border-left: solid thin black;
         width: 100%;
         margin-left: 3%;
+        margin-top: 2%;
 
 
       }
@@ -148,7 +175,12 @@
         float: left;
         width: 100%;
         margin-left: 3%;
+        margin-bottom: 2%;
 
+      }
+
+      .btb-sidemenu_3{
+        width:100%;
       }
 
      
