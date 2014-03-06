@@ -10,6 +10,11 @@
       var pos = 0;
       var user_location;
 
+      var watchID;
+      var geoLoc;
+
+      var cityCircle;
+
      
  
      
@@ -58,6 +63,15 @@
 
          
 
+         if(start==0){
+          start=user_location;
+         }
+         else{
+          var start = document.getElementById('start').value;
+         }
+      
+         
+
          //Options applied to the drawn line Object
           var polyYOptions = {
               strokeColor: '#FF0000',
@@ -92,6 +106,9 @@
                 polylineOptions: poly
 
                 });
+
+                allRoutesArray[pos].setPanel(document.getElementById('directions-panel'))
+
                pos++;
 
              }
@@ -105,6 +122,16 @@
          function wayPointRoute(){
             var startTwo = document.getElementById('start').value;
             var endTwo = document.getElementById('end').value;
+
+
+             if(startTwo==0){
+                startTwo=user_location;
+              }
+              else{
+                var startTwo = document.getElementById('start').value;
+              }
+
+            
 
             // An Array of Google LngLat Objects that represent the location of the way point.
             var waypts = [];
@@ -149,6 +176,7 @@
                               directions: response
                              
                              });
+
                       pos++;
                      }
                   });
@@ -159,6 +187,13 @@
           function displayAllAltRoutes(){
             var startThree = document.getElementById('start').value;
             var endThree = document.getElementById('end').value;
+
+            if(startThree==0){
+              startThree=user_location;
+              }
+            else{
+               startThree = document.getElementById('start').value;
+            }
 
 
           // Request Object Defined Here with addition to provideRouteAlternatives: true
@@ -188,7 +223,7 @@
                                            directions: response,
                                            routeIndex: h
                                       });
-
+                allRoutesArray[pos].setPanel(document.getElementById('directions-panel'));
                   pos++;
                 }
               }
@@ -400,6 +435,7 @@
 
             // Removes Last DirectionsRenderer Object, which is just the route 
             allRoutesArray[pos-1].setMap(null);
+            allRoutesArray[pos-1].setPanel(null);
 
             alert('Total Amount of Routes '+allRoutesArray.length);
 
@@ -442,6 +478,68 @@
           title: 'User Location'
           });
   }
+
+
+        function showLocation(position) {
+            var latitude = position.coords.latitude;
+            var longitude = position.coords.longitude;
+            alert("Latitude : " + latitude + " Longitude: " + longitude);
+
+            drawCircle(latitude,longitude);
+
+            user_location = new google.maps.LatLng(latitude,longitude);
+
+            map.panTo(user_location);
+
+
+          }
+
+        function errorHandler(err) {
+            if(err.code == 1) {
+              alert("Error: Access is denied!");
+            }else if( err.code == 2) {
+              alert("Error: Position is unavailable!");
+            }
+          }
+
+        function getLocationUpdate(){
+         if(navigator.geolocation){
+            // timeout at 60000 milliseconds (60 seconds)
+            var options = {timeout:60000,enableHighAccuracy:true};
+            geoLoc = navigator.geolocation;
+            watchID = geoLoc.watchPosition(showLocation, 
+                                           errorHandler,
+                                           options);
+         }else{
+            alert("Sorry, browser does not support geolocation!");
+         }
+      }
+
+      function drawCircle(latitude,longitude){
+
+       //alert(latitude+' '+longitude);
+
+       cenPos= new google.maps.LatLng(latitude, longitude);
+
+       var circleOptions ={
+            strokeColor: '#FF0000',
+            strokeOpacity: 0.8,
+            strokeWeight: 2,
+            fillColor: '#FF0000',
+            fillOpacity: 0.35,
+            map: map,
+            center: cenPos,
+            radius: 1 };
+
+            cityCircle = new google.maps.Circle(circleOptions);
+
+
+      }
+
+      function stopWatch(){
+        navigator.geolocation.clearWatch(watchID);
+      }
+
 
       // As soon as window loads, execute the function initialize
       google.maps.event.addDomListener(window, 'load', initialize);
