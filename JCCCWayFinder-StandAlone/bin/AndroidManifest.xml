@@ -12,11 +12,8 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
-    <!-- External storage for caching. -->
-    <!-- My Location -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <!-- Maps API needs OpenGL ES 2.0. -->
     <uses-feature
         android:glEsVersion="0x00020000"
         android:required="true" />
@@ -53,6 +50,14 @@
         <activity
             android:name="com.jccc.cis264.WayFinder.StandAlone.MapActivity"
             android:label="@string/title_activity_map" >
+        </activity>
+        <activity
+            android:name="com.jccc.cis264.WayFinder.StandAlone.MainOptionTab1"
+            android:label="@string/title_activity_main_option_tab1" >
+        </activity>
+        <activity
+            android:name="com.jccc.cis264.WayFinder.StandAlone.MainOptionTab2"
+            android:label="@string/title_activity_main_option_tab2" >
         </activity>
     </application>
 

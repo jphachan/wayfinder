@@ -1,22 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string translatable="false" name="app_name">JCCC WayFinder</string>
-    <string translatable="false" name="action_settings">Settings</string>
-    <string translatable="false" name="hello_world">Hello world!</string>
-    <string translatable="false" name="cancel">Cancel</string>
-    <string translatable="false" name="Login">Login</string>
-    <string translatable="false" name="Password">Password</string>
-    <string translatable="false" name="Username">Username</string>
-    <string translatable="false" name="title_activity_main_options1">MainOptions1</string>
-    <string translatable="false" name="To">To:</string>
-    <string translatable="false" name="From">From:</string>
+    <string name="app_name" translatable="false">JCCC WayFinder</string>
+    <string name="action_settings" translatable="false">Settings</string>
+    <string name="hello_world" translatable="false">Hello world!</string>
+    <string name="cancel" translatable="false">Cancel</string>
+    <string name="Login" translatable="false">Login</string>
+    <string name="Password" translatable="false">Password</string>
+    <string name="Username" translatable="false">Username</string>
+    <string name="title_activity_main_options1" translatable="false">MainOptions1</string>
+    <string name="Go" translatable="false">GO!</string>
+    <string name="To" translatable="false">To:</string>
+    <string name="From" translatable="false">From:</string>
+    <string name="tabInstructions">Use the tabs above to pick a location to navigate to, or chose one of the options below</string>
 
-    <string-array translatable="false" name="jcccLocationsTo">
+    <string-array name="jcccLocationsTo" translatable="false">
         <item name="ATB">Arts and Technology Building</item>
         <item name="BL">Billington Library</item>
         <item name="CC">Carlson Center</item>
-        <item name="CCB">Campus Services Building</item>
+        <item name="CSB">Campus Services Building</item>
         <item name="CLB">Classroom Laboratory Building</item>
         <item name="GP">Galileo\'s Pavilion</item>
         <item name="GEB">General Education Building</item>
@@ -32,7 +34,7 @@
         <item name="WLB">Welding Lab Building</item>
         <item name="YH">Yardly Hall</item>
     </string-array>
-    <string-array translatable="false" name="jcccLocationsFrom">
+    <string-array name="jcccLocationsFrom" translatable="false">
         <item>Current Location</item>
         <item>Arts and Technology Building</item>
         <item>Billington Library</item>
@@ -54,6 +56,11 @@
         <item>Yardly Hall</item>
     </string-array>
 
-    <string translatable="false" name="title_activity_map">MapActivity</string>
+    <string name="title_activity_map" translatable="false">MapActivity</string>
+    <string name="title_section1">Section 1</string>
+    <string name="title_section2">Section 2</string>
+    <string name="title_section3">Section 3</string>
+    <string name="title_activity_main_option_tab1">MainOptionTab1</string>
+    <string name="title_activity_main_option_tab2">MainOptionTab2</string>
 
 </resources>

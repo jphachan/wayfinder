@@ -32,7 +32,7 @@ public class MainActivity extends Activity {
         		callback.invoke(origin, true, false); 
         	}
         	});
-        webview.getSettings().setDatabasePath(STORAGE_SERVICE);
+        
         
         setContentView(webview);
         webview.loadUrl("http://students.jccc.edu/jphachan/map.html");
