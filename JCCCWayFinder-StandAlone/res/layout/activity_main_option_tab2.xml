@@ -18,4 +18,11 @@
         android:text="@string/tabInstructions"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:layout_alignLeft="@+id/textView1"
+        android:layout_below="@+id/textView1"
+        android:background="@android:color/darker_gray" />
+
 </RelativeLayout>

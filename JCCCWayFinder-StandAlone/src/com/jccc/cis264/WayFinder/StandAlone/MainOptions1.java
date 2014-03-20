@@ -25,16 +25,23 @@ public class MainOptions1 extends TabActivity {
         Intent intentAndroid1 = new Intent().setClass(this,MainOptionTab1.class);
         TabSpec tab1 = mTabHost
                 .newTabSpec("Android")
-                .setIndicator("Tab1")
+                .setIndicator("By Schedule")
                 .setContent(intentAndroid1);
 
         Intent intentAndroid2 = new Intent().setClass(this,MainOptionTab2.class);
         TabSpec tab2 = mTabHost
                 .newTabSpec("Android")
-                .setIndicator("Tab2")
+                .setIndicator("By Building")
                 .setContent(intentAndroid2);
+        
+        Intent intentAndroid3 = new Intent().setClass(this,MainOptionTab3.class);
+        TabSpec tab3 = mTabHost
+                .newTabSpec("Android")
+                .setIndicator("Today")
+                .setContent(intentAndroid3);
 
         mTabHost.addTab(tab1);
         mTabHost.addTab(tab2);
+        mTabHost.addTab(tab3);
     }
 }

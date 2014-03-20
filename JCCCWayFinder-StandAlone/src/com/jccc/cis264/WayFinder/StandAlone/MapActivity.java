@@ -65,12 +65,9 @@ public class MapActivity extends Activity {
 			addMarker(map, ATB, "Arts and Technology Building");
 			addMarker(map, WLB, "Welding Lab Building");
 			addMarker(map, GYM, "Gymnasium");
-			addMarker(map, GEB, "JCCC");
-			addMarker(map, COM, "JCCC");
-			addMarker(map, NMOCA, "JCCC");
-			addMarker(map, HSC, "JCCC");
-			addMarker(map, PA, "JCCC");
-			addMarker(map, HCDC, "JCCC");
+			addMarker(map, GEB, "General Education Building");
+			addMarker(map, HSC, "Horticultural Science Center");
+			addMarker(map, PA, "Police Acadamy");
 			
 
 			// Construct a CameraPosition focusing on Mountain View and animate the camera to that position.

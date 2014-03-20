@@ -247,15 +247,17 @@ containing a value of this type.
         public static final int activity_main=0x7f030000;
         public static final int activity_main_option_tab1=0x7f030001;
         public static final int activity_main_option_tab2=0x7f030002;
-        public static final int activity_main_options1=0x7f030003;
-        public static final int activity_map=0x7f030004;
+        public static final int activity_main_option_tab3=0x7f030003;
+        public static final int activity_main_options1=0x7f030004;
+        public static final int activity_map=0x7f030005;
     }
     public static final class menu {
         public static final int main=0x7f0b0000;
         public static final int main_option_tab1=0x7f0b0001;
         public static final int main_option_tab2=0x7f0b0002;
-        public static final int main_options1=0x7f0b0003;
-        public static final int map=0x7f0b0004;
+        public static final int main_option_tab3=0x7f0b0003;
+        public static final int main_options1=0x7f0b0004;
+        public static final int map=0x7f0b0005;
     }
     public static final class string {
         public static final int From=0x7f060024;
@@ -365,6 +367,7 @@ containing a value of this type.
         public static final int tabInstructions=0x7f060025;
         public static final int title_activity_main_option_tab1=0x7f06002a;
         public static final int title_activity_main_option_tab2=0x7f06002b;
+        public static final int title_activity_main_option_tab3=0x7f06002c;
         public static final int title_activity_main_options1=0x7f060021;
         public static final int title_activity_map=0x7f060026;
         public static final int title_section1=0x7f060027;
