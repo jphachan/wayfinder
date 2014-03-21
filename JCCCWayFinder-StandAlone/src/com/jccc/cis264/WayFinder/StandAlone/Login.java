@@ -2,7 +2,10 @@ package com.jccc.cis264.WayFinder.StandAlone;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.net.Authenticator;
+import java.net.PasswordAuthentication;
 import java.net.URL;
+import java.net.URLConnection;
 import org.json.JSONObject;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -16,7 +19,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class MainActivity extends Activity {
+public class Login extends Activity {
 	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 	public static Activity MyActivity;
@@ -43,7 +46,7 @@ public class MainActivity extends Activity {
 					pro_dialog = new ProgressDialog(MyActivity);
 					pro_dialog.setTitle("Logging In...");
 					pro_dialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
-					pro_dialog.setMax(14);
+					pro_dialog.setMax(17);
 					pro_dialog.show();
 					new LoginRequest().execute();
 
@@ -96,36 +99,6 @@ public class MainActivity extends Activity {
 		alert.show();
 	}
 
-	//Display a dialog message
-	public void showLoginFailed(){
-		//create prompt object
-		AlertDialog.Builder builder = new AlertDialog.Builder(this);
-
-		//set up prompt
-		builder.setTitle("Confirm");
-		builder.setMessage("Are you sure you wish to exit?");
-
-		//Yes option
-		builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
-			public void onClick(DialogInterface dialog, int which) {
-				//Exit APPLICATION with specified exit code
-				finish();
-			}
-		});
-
-		//No option
-		builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
-			@Override
-			public void onClick(DialogInterface dialog, int which) {
-				//Close dialog
-				dialog.dismiss();
-			}
-		});
-
-		//Show prompt
-		AlertDialog alert = builder.create();
-		alert.show();
-	}
 	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -140,31 +113,67 @@ class LoginRequest extends AsyncTask<String, Integer, Integer> {
 	@Override
 	protected Integer doInBackground(String... params) {
 		try{
-			MainActivity.pro_dialog.incrementProgressBy(1);
+			Login.pro_dialog.incrementProgressBy(1);
+			Login.pro_dialog.setTitle("Starting login...");
+			
+			Login.MyActivity.runOnUiThread(new Runnable() {
+			    public void run(){   
+			    	
+			    }
+			});
+			
 			//Setup environment variables from the main class
-			Activity activity = MainActivity.MyActivity;
-			String username = MainActivity.userBox.getText().toString();
-			String password = MainActivity.passBox.getText().toString();
-			MainActivity.pro_dialog.incrementProgressBy(1);
+			
+			Activity activity = Login.MyActivity;
+			final String username = Login.userBox.getText().toString();
+			final String password = Login.passBox.getText().toString();
+			Login.pro_dialog.incrementProgressBy(1);
+			
 			String tempSrcRead = "", tempStr = "";
-			MainActivity.pro_dialog.incrementProgressBy(1);
+			Login.pro_dialog.incrementProgressBy(1);
+			Login.pro_dialog.setTitle("Initializing account server url...");
+			Login.MyActivity.runOnUiThread(new Runnable() {
+			    public void run(){   
+			    	
+			    }
+			});
 
 			//Initialize and open the SQL Handler API
 			URL loginserver = null;
-			MainActivity.pro_dialog.incrementProgressBy(1);
+			Login.pro_dialog.incrementProgressBy(1);
 			System.out.println("PreURL");
-			loginserver = new URL("http://jcccwayfinder.site40.net/databaseHandler.php?username=" + username + "&password=" + password);
+			loginserver = new URL("http://jcccwayfinder.byethost5.com/DatabaseHandler.php?username=" + username + "&password=" + password);
 			System.out.println("PostURL");
-			MainActivity.pro_dialog.incrementProgressBy(1);
-			loginserver.openConnection().setReadTimeout(10000);
-			MainActivity.pro_dialog.incrementProgressBy(1);
+			Login.pro_dialog.incrementProgressBy(1);
+
+			Login.MyActivity.runOnUiThread(new Runnable() {
+			    public void run(){   
+					Login.pro_dialog.setTitle("Contacting accounts server...");
+			    }
+			});
+			
+			loginserver.openConnection().setReadTimeout(5000);
+			Login.pro_dialog.incrementProgressBy(1);
+
+			Login.MyActivity.runOnUiThread(new Runnable() {
+			    public void run(){   
+					Login.pro_dialog.setTitle("Getting account data...");
+			    }
+			});
+			
 			//Get information from the API
-			MainActivity.pro_dialog.incrementProgressBy(1);
+			Login.pro_dialog.incrementProgressBy(1);
 
 			BufferedReader in2 = null;
 			//Read the response data	    	MainActivity.pro_dialog.incrementProgressBy(1);
 			in2 = new BufferedReader(new InputStreamReader(loginserver.openConnection().getInputStream()));
-			MainActivity.pro_dialog.incrementProgressBy(1);
+			Login.pro_dialog.incrementProgressBy(1);
+
+			Login.MyActivity.runOnUiThread(new Runnable() {
+			    public void run(){   
+					Login.pro_dialog.setTitle("Parsing account data...");
+			    }
+			});
 			//tempStr = tempStr + "{";
 			//PARSE JSON data
 			while(tempSrcRead != null){
@@ -173,21 +182,28 @@ class LoginRequest extends AsyncTask<String, Integer, Integer> {
 					tempStr = tempStr + tempSrcRead;
 				}
 			}
-			MainActivity.pro_dialog.incrementProgressBy(1);
+			System.out.println(tempStr);
+			Login.pro_dialog.incrementProgressBy(1);
 
+			Login.MyActivity.runOnUiThread(new Runnable() {
+			    public void run(){   
+					Login.pro_dialog.setTitle("Checking account credentials...");
+			    }
+			});
+			
 			try{
 				tempStr = tempStr.replace("<!-- Hosting24 Analytics Code --><script type=\"text/javascript\" src=\"http://stats.hosting24.com/count.php\"></script><!-- End Of Analytics Code -->", "");
 				tempStr = tempStr.replace("[", "");
 				tempStr = tempStr.replace("]", "");
-				MainActivity.pro_dialog.incrementProgressBy(1);
+				Login.pro_dialog.incrementProgressBy(1);
 				if(tempStr == ""){
 					System.out.println("EmptyReturn");
-					MainActivity.MyActivity.runOnUiThread(new Runnable() {
+					Login.MyActivity.runOnUiThread(new Runnable() {
 						public void run() {
 							//dismiss loading bar
-							MainActivity.pro_dialog.dismiss();
+							Login.pro_dialog.dismiss();
 							//create a new AlertDialog
-							AlertDialog.Builder Alert  = new AlertDialog.Builder(MainActivity.MyActivity);
+							AlertDialog.Builder Alert  = new AlertDialog.Builder(Login.MyActivity);
 							//set message of alert
 							Alert.setMessage("Incorrect password or username");
 							//set Title of alert
@@ -213,16 +229,71 @@ class LoginRequest extends AsyncTask<String, Integer, Integer> {
 					
 					JSONObject ldata = new JSONObject(tempStr);
 					System.out.println(ldata.length());
+					Login.pro_dialog.incrementProgressBy(1);
 
-						//Create a new intent used to open the next activity
-						Intent startOptions = new Intent(activity, MainOptions1.class);
-						MainActivity.pro_dialog.incrementProgressBy(1);
+					Login.MyActivity.runOnUiThread(new Runnable() {
+					    public void run(){   
+							Login.pro_dialog.setTitle("Initializing Banner API...");
+					    }
+					});
+					
+					URL APIserver = new URL("https://ac-tstemobile.jccc.edu/banner-mobileserver/api/2.0/courses/overview/" + ldata.get("ID") + "?term=201401");
+					Login.pro_dialog.incrementProgressBy(1);
+					Authenticator.setDefault (new Authenticator() {
+					    protected PasswordAuthentication getPasswordAuthentication() {
+					        return new PasswordAuthentication (username, password.toCharArray());
+					    }
+					});
+					
+					
+
+					Login.MyActivity.runOnUiThread(new Runnable() {
+					    public void run(){   
+							Login.pro_dialog.setTitle("Contacting Banner API...");
+					    }
+					});
+					String tempAPIRead = "", tempAPI = "";
+					APIserver.openConnection().setReadTimeout(10000);
+					Login.pro_dialog.incrementProgressBy(1);
+					//Get information from the API
+					Login.pro_dialog.incrementProgressBy(1);
+
+
+					Login.MyActivity.runOnUiThread(new Runnable() {
+					    public void run(){   
+							Login.pro_dialog.setTitle("Reading from banner API...");
+					    }
+					});
+					
+					BufferedReader in3 = null;
+					//Read the response data	    	MainActivity.pro_dialog.incrementProgressBy(1);
+					in3 = new BufferedReader(new InputStreamReader(APIserver.openConnection().getInputStream()));
+					Login.pro_dialog.incrementProgressBy(1);
+					//tempStr = tempStr + "{";
+					//PARSE JSON data
+					while(tempAPIRead != null){
+						tempAPIRead = in3.readLine();
+						if(tempAPIRead != null){
+							tempAPI = tempAPI + tempAPIRead;
+						}
+					}
+					JSONObject APIdata = new JSONObject(tempAPI);
+					System.out.println();
+					
+
+					Login.MyActivity.runOnUiThread(new Runnable() {
+					    public void run(){   
+							Login.pro_dialog.setTitle("Entering application...");
+					    }
+					});
+					//Create a new intent used to open the next activity
+						Intent startOptions = new Intent(activity, MainOptions.class);
+						Login.pro_dialog.incrementProgressBy(1);
 						//put the transfered data needed in the next pane
-						startOptions.putExtra("USERNAME", username);
-						startOptions.putExtra("PASSWORD", password);
-						MainActivity.pro_dialog.incrementProgressBy(1);
+						startOptions.putExtra("ALLDATA", tempAPI);
+						Login.pro_dialog.incrementProgressBy(1);
 						//start the activity
-						MainActivity.pro_dialog.dismiss();
+						Login.pro_dialog.dismiss();
 
 						activity.startActivity(startOptions);
 						
@@ -231,12 +302,12 @@ class LoginRequest extends AsyncTask<String, Integer, Integer> {
 				//~!~Occurs if the user did not enter valid data in one of the login fields *OR* if the Username was not found in the database.
 				//Display login error message
 				e.printStackTrace();
-				MainActivity.MyActivity.runOnUiThread(new Runnable() {
+				Login.MyActivity.runOnUiThread(new Runnable() {
 					public void run() {
 						//dismiss loading bar
-						MainActivity.pro_dialog.dismiss();
+						Login.pro_dialog.dismiss();
 						//create a new AlertDialog
-						AlertDialog.Builder Alert  = new AlertDialog.Builder(MainActivity.MyActivity);
+						AlertDialog.Builder Alert  = new AlertDialog.Builder(Login.MyActivity);
 						//set message of alert
 						Alert.setMessage("Incorrect password or username");
 						//set Title of alert

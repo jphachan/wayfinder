@@ -1,8 +1,12 @@
 package com.jccc.cis264.WayFinder.StandAlone;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
+import android.widget.TextView;
 
 public class MainOptionTab3 extends Activity {
 
@@ -10,6 +14,16 @@ public class MainOptionTab3 extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main_option_tab3);
+		
+        try {
+			JSONObject json = new JSONObject(this.getIntent().getStringExtra("DATA"));
+			TextView tv = (TextView) findViewById(R.id.Tab3TextBoxTest);
+			tv.setText(json.toString());
+			
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	@Override

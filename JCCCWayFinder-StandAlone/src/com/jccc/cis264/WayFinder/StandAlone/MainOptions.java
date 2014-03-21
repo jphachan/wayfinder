@@ -1,5 +1,8 @@
 package com.jccc.cis264.WayFinder.StandAlone;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import android.os.Bundle;
 import android.app.Activity;
 import android.app.TabActivity;
@@ -10,10 +13,9 @@ import android.widget.TabHost.TabSpec;
 
 
 @SuppressWarnings("all")
-public class MainOptions1 extends TabActivity {
-
+public class MainOptions extends TabActivity {
+	private JSONObject APIdata = new JSONObject();
     private TabHost mTabHost;
-
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -22,7 +24,16 @@ public class MainOptions1 extends TabActivity {
         mTabHost = getTabHost();
         mTabHost.setup();
 
+        try {
+			APIdata = new JSONObject(this.getIntent().getStringExtra("ALLDATA"));
+			
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        
         Intent intentAndroid1 = new Intent().setClass(this,MainOptionTab1.class);
+        intentAndroid1.putExtra("DATA", this.getIntent().getStringExtra("ALLDATA"));
         TabSpec tab1 = mTabHost
                 .newTabSpec("Android")
                 .setIndicator("By Schedule")
@@ -35,6 +46,7 @@ public class MainOptions1 extends TabActivity {
                 .setContent(intentAndroid2);
         
         Intent intentAndroid3 = new Intent().setClass(this,MainOptionTab3.class);
+        intentAndroid3.putExtra("DATA", this.getIntent().getStringExtra("ALLDATA"));
         TabSpec tab3 = mTabHost
                 .newTabSpec("Android")
                 .setIndicator("Today")
