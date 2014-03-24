@@ -19,24 +19,26 @@ public class MapActivity extends Activity {
 	private GoogleMap map;
 	@SuppressWarnings("unused")
 	private LatLng JcccCenter = new LatLng(38.92356,-94.728327),
-			CC = new LatLng(38.92356,-94.728327), 
-			OCB = new LatLng(38.9245029,-94.7285108),
-			RC = new LatLng(38.9243700, -94.72684989999999),
-			CLB = new LatLng(38.9233935, -94.7278336),
-			SCI = new LatLng(38.9237222, -94.72876329999997),
-			HCA = new LatLng(38.9230872,-94.72655580000003),
-			GP = new LatLng(38.9233574, -94.7292281),
-			SC = new LatLng(38.9245847, -94.73058229999998),
-			CSB = new LatLng(38.9231457, -94.72993550000001),
-			ATB = new LatLng(38.9231911,-94.7308248),
-			WLB = new LatLng(38.9221687, -94.73094609999998),
-			GYM = new LatLng(38.9240505, -94.73171409999998),
-			GEB = new LatLng(38.924214, -94.7292281),
-			COM = new LatLng(38.9245613,-94.72993550000001),
-			NMOCA = new LatLng(38.924852, -94.72682399999997),
-			HSC = new LatLng(38.9237438, -94.73527139999999),
-			PA = new LatLng(38.924395, -94.73527139999999),
-			HCDC = new LatLng(38.9232574,-94.73527139999999);
+	CC = new LatLng(38.9252624, -94.7279145),
+	LIB = new LatLng(38.924214, -94.72767190000002),
+	RC = new LatLng(38.9243700, -94.72684989999999),
+	OCB = new LatLng(38.9245613,-94.728429),
+	CLB = new LatLng(38.9233935, -94.7278336),
+	SCI = new LatLng(38.9237222, -94.72876329999997),
+	HCA = new LatLng(38.9230872,-94.72655580000003),
+	GP = new LatLng(38.9233574, -94.7292281),
+	SC = new LatLng(38.9245847, -94.73058229999998),
+	CSB = new LatLng(38.9231457, -94.72993550000001),
+	ATB = new LatLng(38.9231911,-94.7308248),
+	WLB = new LatLng(38.9221687, -94.73094609999998),
+	GYM = new LatLng(38.9240505, -94.73171409999998),
+	GEB = new LatLng(38.924214, -94.7292281),
+	COM = new LatLng(38.9245613,-94.72993550000001),
+	HSC = new LatLng(38.9237438, -94.73527139999999),
+	ITC = new LatLng(38.9225006, -94.73179490000001),
+	PA = new LatLng(38.924395, -94.73527139999999);
+	
+	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -68,7 +70,9 @@ public class MapActivity extends Activity {
 			addMarker(map, GEB, "General Education Building");
 			addMarker(map, HSC, "Horticultural Science Center");
 			addMarker(map, PA, "Police Acadamy");
-			
+			addMarker(map, ITC, "Industrial Training Center");
+			addMarker(map, LIB, "Billington Library");
+
 
 			// Construct a CameraPosition focusing on Mountain View and animate the camera to that position.
 			CameraPosition cameraPosition = new CameraPosition.Builder()
@@ -87,7 +91,7 @@ public class MapActivity extends Activity {
 		getMenuInflater().inflate(R.menu.map, menu);
 		return true;
 	}
-	
+
 	private void addMarker(GoogleMap gm, LatLng loc, String title){
 		gm.addMarker(new MarkerOptions()
 		.title(title)

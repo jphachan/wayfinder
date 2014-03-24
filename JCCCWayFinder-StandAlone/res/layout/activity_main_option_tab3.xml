@@ -14,29 +14,65 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="@dimen/activity_horizontal_margin" >
-
-            <TextView
-                android:id="@+id/Tab3TextBoxTest"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true"
-                android:text="@string/hello_world" />
+            android:layout_height="wrap_content"
+            android:padding="0dp" >
             
-            <Button
-                android:id="@+id/button1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_below="@+id/Tab3TextBoxTest"
-                android:text="Button" />
+                <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:paddingBottom="1dp"
+        android:paddingLeft="1dp"
+        android:paddingRight="1dp"
+        android:paddingTop="1dp"
+        android:text="@string/tabInstructions"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textSize="12sp" />
+
+    <View
+        android:id="@+id/view1"
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:layout_alignLeft="@+id/textView1"
+        android:layout_below="@+id/textView1"
+        android:background="@android:color/darker_gray" />
+
+    <Button
+        android:id="@+id/GoButton2A"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/Tab3TextBoxTest"
+        android:text="Button" />
+    <TextView
+        android:id="@+id/Tab3TextBoxTest"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/GoButton2A"
+        android:layout_below="@+id/view1"
+        android:text="@string/hello_world" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/GoButton2A"
+        android:layout_alignBottom="@+id/GoButton2A"
+        android:layout_centerHorizontal="true"
+        android:text="Button" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/view1"
+        android:layout_below="@+id/Tab3TextBoxTest"
+        android:text="Button" />
 
         </RelativeLayout>
-
+        
     </ScrollView>
-
-    
 
 </RelativeLayout>
