@@ -47,7 +47,7 @@ public class MainOptionTab2 extends Activity {
 								   new LatLng(38.924395, -94.73527139999999),
 								   new LatLng(38.9243700, -94.72684989999999),
 								   new LatLng(38.9237222, -94.72876329999997),
-								   new LatLng(38.9245847, -94.73058229999998),
+								    new LatLng(38.9245847, -94.73058229999998),
 								   new LatLng(38.9221687, -94.73094609999998)};
 		
 		valueArray.add("ATB"); valueArray.add("LIB"); valueArray.add("CC"); valueArray.add("CSB"); valueArray.add("CLB"); valueArray.add("GP"); valueArray.add("GEB"); valueArray.add("GYM"); valueArray.add("HSC"); valueArray.add("HCA"); valueArray.add("ITC"); valueArray.add("OCB"); valueArray.add("PA"); valueArray.add("RC"); valueArray.add("SCI"); valueArray.add("SC"); valueArray.add("WLB");

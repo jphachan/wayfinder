@@ -27,7 +27,7 @@ public class Login extends Activity {
 	public static ProgressDialog pro_dialog;
 	public static boolean LoginSuccessful;
 
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -36,7 +36,7 @@ public class Login extends Activity {
 		MyActivity = this;
 		userBox = (TextView) findViewById(R.id.UserBox);
 		passBox = (TextView) findViewById(R.id.PassBox);
-		
+
 		//GO button16 handler
 		final Button LoginButton = (Button) findViewById(R.id.LoginButton);
 		LoginButton.setOnClickListener(new View.OnClickListener() {
@@ -115,27 +115,27 @@ class LoginRequest extends AsyncTask<String, Integer, Integer> {
 		try{
 			Login.pro_dialog.incrementProgressBy(1);
 			Login.pro_dialog.setTitle("Starting login...");
-			
+
 			Login.MyActivity.runOnUiThread(new Runnable() {
-			    public void run(){   
-			    	
-			    }
+				public void run(){   
+
+				}
 			});
-			
+
 			//Setup environment variables from the main class
-			
+
 			Activity activity = Login.MyActivity;
 			final String username = Login.userBox.getText().toString();
 			final String password = Login.passBox.getText().toString();
 			Login.pro_dialog.incrementProgressBy(1);
-			
+
 			String tempSrcRead = "", tempStr = "";
 			Login.pro_dialog.incrementProgressBy(1);
 			Login.pro_dialog.setTitle("Initializing account server url...");
 			Login.MyActivity.runOnUiThread(new Runnable() {
-			    public void run(){   
-			    	
-			    }
+				public void run(){   
+
+				}
 			});
 
 			//Initialize and open the SQL Handler API
@@ -147,20 +147,20 @@ class LoginRequest extends AsyncTask<String, Integer, Integer> {
 			Login.pro_dialog.incrementProgressBy(1);
 
 			Login.MyActivity.runOnUiThread(new Runnable() {
-			    public void run(){   
+				public void run(){   
 					Login.pro_dialog.setTitle("Contacting accounts server...");
-			    }
+				}
 			});
-			
+
 			loginserver.openConnection().setReadTimeout(5000);
 			Login.pro_dialog.incrementProgressBy(1);
 
 			Login.MyActivity.runOnUiThread(new Runnable() {
-			    public void run(){   
+				public void run(){   
 					Login.pro_dialog.setTitle("Getting account data...");
-			    }
+				}
 			});
-			
+
 			//Get information from the API
 			Login.pro_dialog.incrementProgressBy(1);
 
@@ -170,9 +170,9 @@ class LoginRequest extends AsyncTask<String, Integer, Integer> {
 			Login.pro_dialog.incrementProgressBy(1);
 
 			Login.MyActivity.runOnUiThread(new Runnable() {
-			    public void run(){   
+				public void run(){   
 					Login.pro_dialog.setTitle("Parsing account data...");
-			    }
+				}
 			});
 			//tempStr = tempStr + "{";
 			//PARSE JSON data
@@ -186,11 +186,11 @@ class LoginRequest extends AsyncTask<String, Integer, Integer> {
 			Login.pro_dialog.incrementProgressBy(1);
 
 			Login.MyActivity.runOnUiThread(new Runnable() {
-			    public void run(){   
+				public void run(){   
 					Login.pro_dialog.setTitle("Checking account credentials...");
-			    }
+				}
 			});
-			
+
 			try{
 				tempStr = tempStr.replace("<!-- Hosting24 Analytics Code --><script type=\"text/javascript\" src=\"http://stats.hosting24.com/count.php\"></script><!-- End Of Analytics Code -->", "");
 				tempStr = tempStr.replace("[", "");
@@ -215,78 +215,78 @@ class LoginRequest extends AsyncTask<String, Integer, Integer> {
 							Alert.create().show();
 							//script button handler
 							Alert.setPositiveButton("Ok",
-								new DialogInterface.OnClickListener() {
-									public void onClick(DialogInterface dialog, int which) {
-										//button handler is left blank. Its only function is to close the alert, which is default.
-									}
+									new DialogInterface.OnClickListener() {
+								public void onClick(DialogInterface dialog, int which) {
+									//button handler is left blank. Its only function is to close the alert, which is default.
 								}
-							);
+							}
+									);
 						}
 					});
 					//End of alert dialogs
 				}
 				else{
-					
+
 					JSONObject ldata = new JSONObject(tempStr);
 					System.out.println(ldata.length());
 					Login.pro_dialog.incrementProgressBy(1);
+					if(ldata.get("PASSWORD").equals(password)){
+						Login.MyActivity.runOnUiThread(new Runnable() {
+							public void run(){   
+								Login.pro_dialog.setTitle("Initializing Banner API...");
+							}
+						});
 
-					Login.MyActivity.runOnUiThread(new Runnable() {
-					    public void run(){   
-							Login.pro_dialog.setTitle("Initializing Banner API...");
-					    }
-					});
-					
-					URL APIserver = new URL("https://ac-tstemobile.jccc.edu/banner-mobileserver/api/2.0/courses/overview/" + ldata.get("ID") + "?term=201401");
-					Login.pro_dialog.incrementProgressBy(1);
-					Authenticator.setDefault (new Authenticator() {
-					    protected PasswordAuthentication getPasswordAuthentication() {
-					        return new PasswordAuthentication (username, password.toCharArray());
-					    }
-					});
-					
-					
-
-					Login.MyActivity.runOnUiThread(new Runnable() {
-					    public void run(){   
-							Login.pro_dialog.setTitle("Contacting Banner API...");
-					    }
-					});
-					String tempAPIRead = "", tempAPI = "";
-					APIserver.openConnection().setReadTimeout(10000);
-					Login.pro_dialog.incrementProgressBy(1);
-					//Get information from the API
-					Login.pro_dialog.incrementProgressBy(1);
+						URL APIserver = new URL("https://ac-tstemobile.jccc.edu/banner-mobileserver/api/2.0/courses/overview/" + ldata.get("ID") + "?term=201401");
+						Login.pro_dialog.incrementProgressBy(1);
+						Authenticator.setDefault (new Authenticator() {
+							protected PasswordAuthentication getPasswordAuthentication() {
+								return new PasswordAuthentication (username, password.toCharArray());
+							}
+						});
 
 
-					Login.MyActivity.runOnUiThread(new Runnable() {
-					    public void run(){   
-							Login.pro_dialog.setTitle("Reading from banner API...");
-					    }
-					});
-					
-					BufferedReader in3 = null;
-					//Read the response data	    	MainActivity.pro_dialog.incrementProgressBy(1);
-					in3 = new BufferedReader(new InputStreamReader(APIserver.openConnection().getInputStream()));
-					Login.pro_dialog.incrementProgressBy(1);
-					//tempStr = tempStr + "{";
-					//PARSE JSON data
-					while(tempAPIRead != null){
-						tempAPIRead = in3.readLine();
-						if(tempAPIRead != null){
-							tempAPI = tempAPI + tempAPIRead;
+
+						Login.MyActivity.runOnUiThread(new Runnable() {
+							public void run(){   
+								Login.pro_dialog.setTitle("Contacting Banner API...");
+							}
+						});
+						String tempAPIRead = "", tempAPI = "";
+						APIserver.openConnection().setReadTimeout(10000);
+						Login.pro_dialog.incrementProgressBy(1);
+						//Get information from the API
+						Login.pro_dialog.incrementProgressBy(1);
+
+
+						Login.MyActivity.runOnUiThread(new Runnable() {
+							public void run(){   
+								Login.pro_dialog.setTitle("Reading from banner API...");
+							}
+						});
+
+						BufferedReader in3 = null;
+						//Read the response data	    	MainActivity.pro_dialog.incrementProgressBy(1);
+						in3 = new BufferedReader(new InputStreamReader(APIserver.openConnection().getInputStream()));
+						Login.pro_dialog.incrementProgressBy(1);
+						//tempStr = tempStr + "{";
+						//PARSE JSON data
+						while(tempAPIRead != null){
+							tempAPIRead = in3.readLine();
+							if(tempAPIRead != null){
+								tempAPI = tempAPI + tempAPIRead;
+							}
 						}
-					}
-					JSONObject APIdata = new JSONObject(tempAPI);
-					System.out.println();
-					
+						JSONObject APIdata = new JSONObject(tempAPI);
+						System.out.println();
 
-					Login.MyActivity.runOnUiThread(new Runnable() {
-					    public void run(){   
-							Login.pro_dialog.setTitle("Entering application...");
-					    }
-					});
-					//Create a new intent used to open the next activity
+
+						Login.MyActivity.runOnUiThread(new Runnable() {
+							public void run(){   
+								Login.pro_dialog.setTitle("Entering application...");
+							}
+						});
+						//Create a new intent used to open the next activity
 						Intent startOptions = new Intent(activity, MainOptions.class);
 						Login.pro_dialog.incrementProgressBy(1);
 						//put the transfered data needed in the next pane
@@ -296,7 +296,34 @@ class LoginRequest extends AsyncTask<String, Integer, Integer> {
 						Login.pro_dialog.dismiss();
 
 						activity.startActivity(startOptions);
-						
+					}
+					else{
+						Login.MyActivity.runOnUiThread(new Runnable() {
+							public void run() {
+								//dismiss loading bar 
+								Login.pro_dialog.dismiss();
+								//create a new AlertDialog
+								AlertDialog.Builder Alert  = new AlertDialog.Builder(Login.MyActivity);
+								//set message of alert
+								Alert.setMessage("Incorrect password or username");
+								//set Title of alert
+								Alert.setTitle("Login Failed!");
+								//set button text
+								Alert.setPositiveButton("OK", null);
+								Alert.setCancelable(true);
+								//show alert
+								Alert.create().show();
+								//script button handler
+								Alert.setPositiveButton("Ok",
+										new DialogInterface.OnClickListener() {
+									public void onClick(DialogInterface dialog, int which) {
+										//button handler is left blank. Its only function is to close the alert, which is default.
+									}
+								}
+										);
+							}
+						});
+					}
 				}	
 			}catch(Exception e){				
 				//~!~Occurs if the user did not enter valid data in one of the login fields *OR* if the Username was not found in the database.
@@ -319,12 +346,12 @@ class LoginRequest extends AsyncTask<String, Integer, Integer> {
 						Alert.create().show();
 						//script button handler
 						Alert.setPositiveButton("Ok",
-							new DialogInterface.OnClickListener() {
-								public void onClick(DialogInterface dialog, int which) {
-									//button handler is left blank. Its only function is to close the alert, which is default.
-								}
+								new DialogInterface.OnClickListener() {
+							public void onClick(DialogInterface dialog, int which) {
+								//button handler is left blank. Its only function is to close the alert, which is default.
 							}
-						);
+						}
+								);
 					}
 				});
 				//End of alert dialog
