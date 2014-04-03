@@ -8,6 +8,7 @@
 
          if(start==0){
           start=user_location;
+
          }
          else{
           var start = document.getElementById('start').value;
@@ -57,6 +58,10 @@
              }
            });
           // Directions Request Code End
+
+            $('#btbside_menu_1').hide();
+          	$('#map-canvas').show();
+            $('#directions-panel').show();
 
          }
 // End Code for Simple Route //
@@ -174,6 +179,10 @@
               }
            });
 
+          $('#btbside_menu_1').hide();
+          $('#map-canvas').show();
+          $('#directions-panel').show();
+
          }
 
 // displayAllRoutes Function Code Starts Ends Here
@@ -206,3 +215,5 @@
       pos--;
      }
   }
+
+
