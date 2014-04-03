@@ -228,3 +228,54 @@
           title: 'User Location'
           });
   }
+
+  function showLink(){
+    $('.btb-sidemenu_3').append('link goes here');
+  }
+
+  function removeLink(){
+    
+  }
+
+  $(document).ready(function(){
+
+  			$('#btbside_menu_1').hide();
+            
+            $('#button').click(function(){
+                //$('#btbside_menu_1').hide();
+                
+            }); 
+
+            $('#nav_button').click(function() {
+
+            	$('#map-canvas').hide();
+            	$('#btbside_menu_1').show();
+                var $panel = $('#btbside_menu_1');
+                var $d_panel = $('#directions-panel');
+
+            	$panel.css('float','none');
+            	//$panel.css('width','47%');
+
+            	$d_panel.hide();
+
+            	
+			}); 
+
+			$('#map_button').click(function() {
+
+        
+				var $map_div = $('#map-canvas');
+				//$map_div.css('width','100%');
+
+            	$('#map-canvas').show();
+                $('#btbside_menu_1').hide();
+                $('#directions-panel').show();
+            	
+			});
+
+
+
+        });
+
+
+
