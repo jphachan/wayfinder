@@ -35,7 +35,7 @@ public class MainActivity extends Activity {
         
         
         setContentView(webview);
-        webview.loadUrl("http://students.jccc.edu/jphachan/map.html");
+        webview.loadUrl("http://students.jccc.edu/jphachan/map.php");
         //webview.loadData("https://raw2.github.com/jphachan/wayfinder/master/map.html", 
         //		 		 "text/html",
         //				 null);
