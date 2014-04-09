@@ -36,7 +36,7 @@ public class MainOptionTab1 extends Activity {
 					cb.setId(1000 + i);
 					cb.setText(json.getJSONArray("terms").getJSONObject(0).getJSONArray("sections").getJSONObject(i).getString("sectionTitle") + "\n");
 
-					ArrayList al = new ArrayList();
+					ArrayList<Integer> al = new ArrayList<Integer>();
 					for(int j = 0; json.getJSONArray("terms").getJSONObject(0).getJSONArray("sections").getJSONObject(i).getJSONArray("meetingPatterns").getJSONObject(0).getJSONArray("daysOfWeek").length() > j; j++){
 						al.add(json.getJSONArray("terms").getJSONObject(0).getJSONArray("sections").getJSONObject(i).getJSONArray("meetingPatterns").getJSONObject(0).getJSONArray("daysOfWeek").getInt(j));
 					}
