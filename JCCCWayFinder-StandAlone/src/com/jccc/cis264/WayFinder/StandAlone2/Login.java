@@ -6,9 +6,7 @@ import java.net.Authenticator;
 import java.net.PasswordAuthentication;
 import java.net.URL;
 import org.json.JSONObject;
-
 import com.jccc.cis264.WayFinder.StandAlone.R;
-
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.app.Activity;
