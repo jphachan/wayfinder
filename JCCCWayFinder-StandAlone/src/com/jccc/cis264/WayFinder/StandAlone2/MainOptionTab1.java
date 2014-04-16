@@ -20,13 +20,16 @@ public class MainOptionTab1 extends Activity {
 
 		final ArrayList<String> Destinations = new ArrayList();
 		final Intent startMap = new Intent(this, MainOptions.class);
+
 		try{
-		JSONObject json = new JSONObject(this.getIntent().getStringExtra("DATA"));
+
+			JSONObject json = new JSONObject(this.getIntent().getStringExtra("DATA"));
+
 		}catch(Exception e){
 			e.printStackTrace();
 		}
-		
-		
+
+
 	}
 
 	@Override

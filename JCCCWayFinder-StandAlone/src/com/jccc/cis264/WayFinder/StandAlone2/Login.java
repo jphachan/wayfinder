@@ -251,7 +251,7 @@ class LoginRequest extends AsyncTask<String, Integer, Integer> {
 							}
 						});
 
-						URL APIserver = new URL("https://ac-tstemobile.jccc.edu/banner-mobileserver/api/2.0/courses/overview/" + ldata.get("ID") + "?term=201401");
+						URL APIserver = new URL("https://ac-tstemobile.jccc.edu/banner-mobileserver/api/2.0/courses/overview/" + ldata.get("ID"));
 						Login.pro_dialog.incrementProgressBy(1);
 						Authenticator.setDefault (new Authenticator() {
 							@Override

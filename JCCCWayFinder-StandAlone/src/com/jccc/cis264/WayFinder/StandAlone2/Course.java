@@ -8,6 +8,7 @@ public class Course{
 
 	private String SectionId, SectionTitle, CourseName, CourseDescription, CourseSectionNumber, FirstMeetingDate, LastMeetingDate, Ceus, LearningProvider, LearningProviderSideId, PrimarySectionId;
 	private int Credits;
+	@SuppressWarnings("unused")
 	private Boolean IsInstructor, isF2F;
 	private ArrayList<MeetingPattern> MeetingPattern;
 	private ArrayList<Instructor> Instructor;
