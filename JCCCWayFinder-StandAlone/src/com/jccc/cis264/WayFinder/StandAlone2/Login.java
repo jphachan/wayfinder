@@ -294,10 +294,6 @@ class LoginRequest extends AsyncTask<String, Integer, Integer> {
 								tempAPI = tempAPI + tempAPIRead;
 							}
 						}
-						JSONObject APIdata = new JSONObject(tempAPI);
-						System.out.println();
-
-
 						Login.MyActivity.runOnUiThread(new Runnable() {
 							@Override
 							public void run(){   
