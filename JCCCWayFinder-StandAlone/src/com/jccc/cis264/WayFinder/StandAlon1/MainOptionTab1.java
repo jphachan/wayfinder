@@ -27,6 +27,7 @@ import android.widget.TableRow;
 public class MainOptionTab1 extends Activity {
 	boolean sAllState1 = true;
 	private Activity myActivity = this;
+	String DayCodes;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -36,20 +37,22 @@ public class MainOptionTab1 extends Activity {
 		TableLayout tl = (TableLayout) findViewById(R.id.tableLayout1);
 		RadioButton defaultrb = (RadioButton) findViewById(R.id.auton_radio_1);
 		defaultrb.setSelected(true);
+		String tempDayCodes = null;
+		
 		
 		try{
 			JSONObject json = new JSONObject(this.getIntent().getStringExtra("DATA"));
 			final Student stud = new Student(json);
 			final ArrayList<CheckBox> cbA = new ArrayList();
-
+			
 
 
 			for(int i = 0; i < stud.getTerm(0).getSections().size(); i++){
-				String tempDayCodes = "";
+				
 				final int j = i;
 				if(!stud.getTerm(0).getSections().get(i).isOnline()){
 					if(i==0){
-						final String DayCodes = tempDayCodes;
+						
 						TableRow tr = (TableRow) findViewById(R.id.tableRow1);
 						RelativeLayout rl = (RelativeLayout) findViewById(R.id.RelLayoutTable);
 						CheckBox cb = (CheckBox) findViewById(R.id.checkBox1);
@@ -59,6 +62,7 @@ public class MainOptionTab1 extends Activity {
 						RelativeLayout.LayoutParams btnParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
 						btnParams.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, RelativeLayout.TRUE);
 						btn.setText("Details");
+						tempDayCodes = "";
 						for(int k = 01; k < 8; k++){
 							if(stud.getTerm(0).getSection(j).getMeetingPattern(0).getDaysOfWeek().contains(k)){
 								if(k == 1){
@@ -82,10 +86,14 @@ public class MainOptionTab1 extends Activity {
 								else if(k == 7){
 									tempDayCodes += "S ";
 								}
+								System.out.println(tempDayCodes);
 							}
 							else{
 								tempDayCodes += "- ";
+								System.out.println(tempDayCodes);
 							}
+							DayCodes = tempDayCodes;
+							tempDayCodes = "";
 						}
 						btn.setOnClickListener(new View.OnClickListener() {
 							@Override
