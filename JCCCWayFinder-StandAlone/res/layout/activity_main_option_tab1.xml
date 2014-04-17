@@ -9,8 +9,18 @@
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
+        android:paddingBottom="1dp"
+        android:paddingLeft="1dp"
+        android:paddingRight="1dp"
+        android:paddingTop="1dp"
+        android:text="@string/tabInstructions"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/TextView01"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:paddingBottom="1dp"
         android:paddingLeft="1dp"
         android:paddingRight="1dp"
@@ -29,33 +39,75 @@
 
     <RelativeLayout
         android:id="@+id/relativeLayout1"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/view1"
         android:layout_below="@+id/view1" >
 
         <ScrollView
             android:id="@+id/scrollView1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            tools:ignore="UselessParent" >
 
-            <RelativeLayout
-                android:id="@+id/RelativeLayout2"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" >
+            <TableLayout
+                android:id="@+id/tableLayout1"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                tools:ignore="UselessLeaf" >
 
-            </RelativeLayout>
+                <!-- DYNAMICALLY CREATED CODE GOES HERE.  THIS WILL BE FILLED IN BY Tab1.JAVA DURING RUNTIME -->
+                <!--                                  DO NOT INSERT CODE HERE                                -->
+
+                <TableRow
+                    android:id="@+id/tableRow1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" >
+
+                    <RelativeLayout
+                        android:id="@+id/RelLayoutTable"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" >
+
+                        <Button
+                            android:id="@+id/button2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_alignParentTop="true"
+                            android:text="Button" />
+
+                        <CheckBox
+                            android:id="@+id/checkBox1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_centerVertical="true"
+                            android:text="CheckBox" />
+
+                    </RelativeLayout>
+
+                </TableRow>
+
+                <View
+                    android:id="@+id/View01"
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="@android:color/darker_gray" />
+
+            </TableLayout>
 
         </ScrollView>
 
     </RelativeLayout>
 
     <Button
-        android:id="@+id/button1"
+        android:id="@+id/TakeMeThere"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/relativeLayout1"
         android:layout_below="@+id/relativeLayout1"
-        android:text="Button" />
+        android:text="@string/button"
+        tools:ignore="HardcodedText" />
 
 </RelativeLayout>
