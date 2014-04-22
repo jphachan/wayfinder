@@ -11,7 +11,7 @@ public class Section{
 	private int Credits;
 	@SuppressWarnings("unused")
 	private Boolean IsInstructor, isF2F;
-	private ArrayList<MeetingPattern> MeetingPattern = new ArrayList();
+	private MeetingPattern MeetingPattern;
 	private ArrayList<Instructor> Instructor = new ArrayList();
 
 	public Section(JSONObject data) throws JSONException{
@@ -28,22 +28,19 @@ public class Section{
 		PrimarySectionId = data.getString("primarySectionId");
 		Credits = data.getInt("credits");
 		IsInstructor = data.getBoolean("isInstructor");
-		
-		if(data.getJSONArray("meetingPatterns").length() > 0){
-			for(int i = 0; i < data.getJSONArray("meetingPatterns").length(); i++){
-				if(data.getJSONArray("meetingPatterns").getJSONObject(i).length() > 0){
-					MeetingPattern.add(new MeetingPattern(data.getJSONArray("meetingPatterns").getJSONObject(i)));
-				}
-			}
+
+
+		if(data.getJSONArray("meetingPatterns").getJSONObject(0).length() > 0){
+			MeetingPattern = new MeetingPattern(data.getJSONArray("meetingPatterns").getJSONObject(0));
 		}
-		
+
 		if(data.getJSONArray("instructors").length() > 0){
 			for(int i = 0; i < data.getJSONArray("instructors").length(); i++){
 				if(data.getJSONArray("instructors").getJSONObject(i).length() > 0){
 					Instructor.add(new Instructor(data.getJSONArray("instructors").getJSONObject(i)));
 				}
 				else{
-					
+
 				}
 			}
 		}
@@ -108,13 +105,13 @@ public class Section{
 	public Boolean isInstructor() {
 		return IsInstructor;
 	}
-	
+
 	public Boolean isOnline() {
 		return !isF2F;
 	}
 
 	public MeetingPattern getMeetingPattern() {
-		return MeetingPattern.get(0);
+		return MeetingPattern;
 	}
 
 	public Instructor getInstructor( int index) {
