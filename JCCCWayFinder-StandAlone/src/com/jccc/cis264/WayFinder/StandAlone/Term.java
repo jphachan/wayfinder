@@ -23,9 +23,7 @@ public class Term {
 			for(int i = 0; i < data.getJSONArray("sections").length(); i++){
 				if(data.getJSONArray("sections").getJSONObject(i).length() > 0){
 					section.add(new Section(data.getJSONArray("sections").getJSONObject(i)));
-				}
-				else{
-
+					System.out.println(section.get(i).getMeetingPattern().getBuilding());
 				}
 			}
 		}

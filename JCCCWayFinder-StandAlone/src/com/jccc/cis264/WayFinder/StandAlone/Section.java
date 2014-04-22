@@ -34,9 +34,6 @@ public class Section{
 				if(data.getJSONArray("meetingPatterns").getJSONObject(i).length() > 0){
 					MeetingPattern.add(new MeetingPattern(data.getJSONArray("meetingPatterns").getJSONObject(i)));
 				}
-				else{
-					
-				}
 			}
 		}
 		
@@ -116,8 +113,8 @@ public class Section{
 		return !isF2F;
 	}
 
-	public MeetingPattern getMeetingPattern(int index) {
-		return MeetingPattern.get(index);
+	public MeetingPattern getMeetingPattern() {
+		return MeetingPattern.get(0);
 	}
 
 	public Instructor getInstructor( int index) {

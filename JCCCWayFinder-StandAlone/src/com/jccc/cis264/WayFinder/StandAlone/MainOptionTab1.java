@@ -50,7 +50,6 @@ public class MainOptionTab1 extends Activity {
 
 
 			for(int i = 0; i < stud.getTerm(0).getSections().size(); i++){
-				
 				final int j = i;
 				if(!stud.getTerm(0).getSections().get(i).isOnline()){
 					if(i==0){
@@ -66,7 +65,7 @@ public class MainOptionTab1 extends Activity {
 						btn.setText("Details");
 						tempDayCodes = "";
 						for(int k = 01; k < 8; k++){
-							if(stud.getTerm(0).getSection(j).getMeetingPattern(0).getDaysOfWeek().contains(k)){
+							if(stud.getTerm(0).getSection(j).getMeetingPattern().getDaysOfWeek().contains(k)){
 								if(k == 1){
 									tempDayCodes += "S ";
 								}
@@ -146,7 +145,7 @@ public class MainOptionTab1 extends Activity {
 						btnParams1.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, RelativeLayout.TRUE);
 						btn1.setText("Details");
 						for(int k = 01; k < 8; k++){
-							if(stud.getTerm(0).getSection(i).getMeetingPattern(0).getDaysOfWeek().contains(k)){
+							if(stud.getTerm(0).getSection(i).getMeetingPattern().getDaysOfWeek().contains(k)){
 								if(k == 1){
 									tempDayCodes += "S ";
 								}
@@ -237,9 +236,9 @@ public class MainOptionTab1 extends Activity {
 					
 					if(numChecked == 1){
 						System.out.println(checkedIndex);
-						System.out.println(stud.getTerm(0).getSection(checkedIndex).getMeetingPattern(0).getBuildingId());
-						System.out.println(findLatLngByCode(stud.getTerm(0).getSection(checkedIndex).getMeetingPattern(0).getBuildingId()));
-						Intent intent = new Intent(android.content.Intent.ACTION_VIEW, Uri.parse("google.navigation:q=" + findLatLngByCode(stud.getTerm(0).getSection(checkedIndex).getMeetingPattern(0).getBuildingId()).latitude + "," + findLatLngByCode(stud.getTerm(0).getSection(checkedIndex).getMeetingPattern(0).getBuildingId()).longitude + "&mode=w"));
+						System.out.println(stud.getTerm(0).getSection(checkedIndex).getMeetingPattern().getBuildingId());
+						System.out.println(findLatLngByCode(stud.getTerm(0).getSection(checkedIndex).getMeetingPattern().getBuildingId()));
+						Intent intent = new Intent(android.content.Intent.ACTION_VIEW, Uri.parse("google.navigation:q=" + findLatLngByCode(stud.getTerm(0).getSection(checkedIndex).getMeetingPattern().getBuildingId()).latitude + "," + findLatLngByCode(stud.getTerm(0).getSection(checkedIndex).getMeetingPattern().getBuildingId()).longitude + "&mode=w"));
 						myActivity.startActivity(intent);	
 					}
 					else if(numChecked == 0){
@@ -382,7 +381,6 @@ public class MainOptionTab1 extends Activity {
 		else if(code.equals("ITC"))
 			return ITC;
 		else if(code.equals("PA"))
-				
 			return PA;
 		else if(code.equals("SCI"))
 			return SCI;
