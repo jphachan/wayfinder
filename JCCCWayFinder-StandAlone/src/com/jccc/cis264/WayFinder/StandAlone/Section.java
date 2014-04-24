@@ -8,7 +8,7 @@ import org.json.JSONObject;
 public class Section{
 
 	private String SectionId, SectionTitle, CourseName, CourseDescription, CourseSectionNumber, FirstMeetingDate, LastMeetingDate, Ceus, LearningProvider, LearningProviderSiteId, PrimarySectionId;
-	private int Credits;
+	private int Credits, SectionNumber;
 	@SuppressWarnings("unused")
 	private Boolean IsInstructor, isF2F;
 	private MeetingPattern MeetingPattern;
@@ -30,8 +30,10 @@ public class Section{
 		IsInstructor = data.getBoolean("isInstructor");
 
 
-		if(data.getJSONArray("meetingPatterns").getJSONObject(0).length() > 0){
+		if(data.getJSONArray("meetingPatterns").length() > 0){
 			MeetingPattern = new MeetingPattern(data.getJSONArray("meetingPatterns").getJSONObject(0));
+		}else{
+			MeetingPattern = null;
 		}
 
 		if(data.getJSONArray("instructors").length() > 0){
@@ -52,6 +54,16 @@ public class Section{
 			isF2F = true;
 		}
 
+	}
+
+	
+	
+	public int getSectionNumber() {
+		return SectionNumber;
+	}
+
+	public void setSectionNumber(int sectionNumber) {
+		SectionNumber = sectionNumber;
 	}
 
 	public String getSectionId() {

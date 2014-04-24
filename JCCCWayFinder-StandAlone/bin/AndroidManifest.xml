@@ -46,23 +46,28 @@
         </activity>
         <activity
             android:name="com.jccc.cis264.WayFinder.StandAlone.MainOptions"
-            android:label="@string/title_activity_main_options1" >
+            android:label="@string/title_activity_main_options1" 
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name="com.jccc.cis264.WayFinder.StandAlone.MapActivity"
-            android:label="@string/title_activity_map" >
+            android:label="@string/title_activity_map" 
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name="com.jccc.cis264.WayFinder.StandAlone.MainOptionTab1"
-            android:label="@string/title_activity_main_option_tab1" >
+            android:label="@string/title_activity_main_option_tab1" 
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name="com.jccc.cis264.WayFinder.StandAlone.MainOptionTab2"
-            android:label="@string/title_activity_main_option_tab2" >
+            android:label="@string/title_activity_main_option_tab2" 
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name="com.jccc.cis264.WayFinder.StandAlone.MainOptionTab3"
-            android:label="@string/title_activity_main_option_tab3" >
+            android:label="@string/title_activity_main_option_tab3" 
+            android:screenOrientation="portrait" >
         </activity>
     </application>
 

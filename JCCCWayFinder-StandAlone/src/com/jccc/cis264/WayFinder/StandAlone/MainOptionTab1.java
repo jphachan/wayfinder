@@ -57,7 +57,8 @@ public class MainOptionTab1 extends Activity {
 						TableRow tr = (TableRow) findViewById(R.id.tableRow1);
 						RelativeLayout rl = (RelativeLayout) findViewById(R.id.RelLayoutTable);
 						CheckBox cb = (CheckBox) findViewById(R.id.checkBox1);
-						cb.setId(1000+i);
+
+						cb.setId(1000 + stud.getTerm(0).getSection(j).getSectionNumber());
 						Button btn = (Button) findViewById(R.id.button2);
 						RelativeLayout.LayoutParams cbParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
 						RelativeLayout.LayoutParams btnParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
@@ -135,7 +136,7 @@ public class MainOptionTab1 extends Activity {
 						TableRow tr1 = new TableRow(myActivity);
 						RelativeLayout rl1 = new RelativeLayout(myActivity);
 						CheckBox cb1 = new CheckBox(myActivity);
-						cb1.setId(1000+i);
+						cb1.setId(1000 + stud.getTerm(0).getSection(i).getSectionNumber());
 						Button btn1 = new Button(myActivity);
 						View v1 = new View(this);
 						v1.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.FILL_PARENT, 1));
@@ -228,14 +229,17 @@ public class MainOptionTab1 extends Activity {
 					int checkedIndex = 0;
 					
 					for(int i = 0; cbA.size() > i; i++){
+						
 						if(cbA.get(i).isChecked()){
 							 numChecked++;
-							 checkedIndex = i;
+							 System.out.println(i);
+							 checkedIndex = cbA.get(i).getId() - 1000;
 						}
 					}
 					
 					if(numChecked == 1){
 						System.out.println(checkedIndex);
+						System.out.println(stud.getTerm(0).getSection(checkedIndex).getCourseDescription());
 						System.out.println(stud.getTerm(0).getSection(checkedIndex).getMeetingPattern().getBuildingId());
 						System.out.println(findLatLngByCode(stud.getTerm(0).getSection(checkedIndex).getMeetingPattern().getBuildingId()));
 						Intent intent = new Intent(android.content.Intent.ACTION_VIEW, Uri.parse("google.navigation:q=" + findLatLngByCode(stud.getTerm(0).getSection(checkedIndex).getMeetingPattern().getBuildingId()).latitude + "," + findLatLngByCode(stud.getTerm(0).getSection(checkedIndex).getMeetingPattern().getBuildingId()).longitude + "&mode=w"));
