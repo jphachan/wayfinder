@@ -5,6 +5,9 @@ import java.util.ArrayList;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+/**
+ * Contains information about the meeting patterns of a particular course&#046; </br><i>Created By: Section</i>
+ */
 @SuppressWarnings("all")
 public class MeetingPattern {
 

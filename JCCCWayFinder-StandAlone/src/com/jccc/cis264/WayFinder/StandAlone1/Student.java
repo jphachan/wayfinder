@@ -4,13 +4,22 @@ import java.util.ArrayList;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-
+/**
+ * Represents a physical student&#046; Prompts all other objects in the hierarchy to be created&#046;</br><i>Created by: Programmer/User</i>
+ * 
+ */
 @SuppressWarnings("all")
 public class Student {
 
 	private String Id, Name;
 	ArrayList<Term> term = new ArrayList();
 	
+	/**
+	 * Creates a fully initialized instance of a Student, and prompts an array of Terms to be created, as defined by data provided by the Banner Mobile API.
+	 * @param data The full JSON data returned from BANNER MOBILE API
+	 * @throws JSONException if JSON data is unreadable or empty
+	 * @see Term
+	 */
 	public Student(JSONObject data) throws JSONException{
 		Id = data.getJSONObject("person").getString("id");
 		Name = data.getJSONObject("person").getString("name");
@@ -28,50 +37,25 @@ public class Student {
 	}
 	
 	/**
-	 * <b>Type: </b>String</br></br>
-	 * 
-	 * <b> Description:</b></br>
-	 * Returns the unique ID of the respective student as defined by the Banner Mobile API.</br></br>
-	 * 
-	 * <b>Example: </b></br>
-	 * Student ID: 007801792</br></br>
-	 * 
-	 * <b>Usage:</b></br>
-	 * Student.getId();</br></br>
+	 * Gets the student ID of the student represented by the current instance
+	 * @return the ID of the Student
 	 */
 	public String getId() {
 		return Id;
 	}
 
 	/**
-	 * <b>Type: </b>String</br></br>
-	 * 
-	 *<b> Description:</b></br>
-	 * Returns the name of the respective student as defined by the Banner Mobile API.</br></br>
-	 * 
-	 * <b>Example: </b></br>
-	 * Name: Ardvark, Alvin
-	 * 
-	 * <b>Usage:</b></br>
-	 * Student.getName();</br></br>
+	 * Gets the name of the student represented by the current instance
+	 * @return the NAME of the student
 	 */
 	public String getName() {
 		return Name;
 	}
 
 	/**
-	 * <b>Type: </b>String</br></br>
-	 * 
-	 *<b> Description:</b></br>
-	 * Returns the a specific term of the respective student as defined by INDEX, and the Banner Mobile API.</br></br>
-	 * 
-	 * <b>Example: </b></br>
-	 * Term ID: 80179</br></br>
-	 * 
-	 * <b>Usage:</b></br>
-	 * Student.getTerm(index);</br></br>
-	 * 
-	 * @param index the index of the term requested. Current term is 0.
+	 * Returns a specific term for the student, as specified by the Banner Mobile API, and the programmer specified index.
+	 * @param index
+	 * @return the specified Term ovject, given the JSON data, and the specified index.
 	 * @see Term
 	 */
 	public Term getTerm(int index) {

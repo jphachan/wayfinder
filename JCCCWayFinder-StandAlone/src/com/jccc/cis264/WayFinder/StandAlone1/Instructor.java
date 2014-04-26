@@ -4,13 +4,14 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 /**
- * contains information about the Instructor of the course calling the constructor.
+ * Contains information about the Instructor of the course calling the constructor&#046;</br><i>Created by: Section</i>
+ * 
  */
 public class Instructor {
 	private String FirstName, LastName, MiddleInitial, InstructorId, Primary, FormattedName;
 	
 	/**
-	 * creates a fully initialized instance of Instructor when called
+	 * Creates a fully initialized instance of Instructor when calle</br>Created by: Section
 	 * @param data the incoming JSON data
 	 * @throws JSONException Thrown if the JSON data is empty, or unreadable
 	 */

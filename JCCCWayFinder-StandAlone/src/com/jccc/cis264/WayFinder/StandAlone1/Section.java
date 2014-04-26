@@ -4,6 +4,10 @@ import java.util.ArrayList;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+/**
+ * Represents a Student's individual courses&#046; Each instance of Section will be uniquely initialized based on that semister's catalog&#046;</br><i>Created by: Term</i>
+ * 
+ */
 @SuppressWarnings("all")
 public class Section{
 
@@ -14,6 +18,14 @@ public class Section{
 	private MeetingPattern MeetingPattern;
 	private ArrayList<Instructor> Instructor = new ArrayList();
 
+	/**
+	 * Creates a fully initialized instance of Section.  Also checks to see if a section is online or face-to-face by counting the number of F2F meeting patterns.
+	 * @param data JSON data containing section information
+	 * @throws JSONException if JSON input data is blank or unreadable
+	 * @see MeetingPattern
+	 * @See Instructor
+	 * @See 
+	 */
 	public Section(JSONObject data) throws JSONException{
 		SectionId = data.getString("sectionId");
 		SectionTitle = data.getString("sectionTitle");
@@ -28,7 +40,6 @@ public class Section{
 		PrimarySectionId = data.getString("primarySectionId");
 		Credits = data.getInt("credits");
 		IsInstructor = data.getBoolean("isInstructor");
-
 
 		if(data.getJSONArray("meetingPatterns").length() > 0){
 			MeetingPattern = new MeetingPattern(data.getJSONArray("meetingPatterns").getJSONObject(0));
@@ -57,11 +68,18 @@ public class Section{
 	}
 
 	
-	
+	/**
+	 * gets the section number as listed in the interface. Section numbers are dynamic, and assigned at runtime by {@link #setSectionNumber(int)}
+	 * @return the interface section order
+	 */
 	public int getSectionNumber() {
 		return SectionNumber;
 	}
 
+	/**
+	 * Sets the section
+	 * @param sectionNumber
+	 */
 	public void setSectionNumber(int sectionNumber) {
 		SectionNumber = sectionNumber;
 	}

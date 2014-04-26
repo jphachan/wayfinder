@@ -5,11 +5,12 @@ import java.util.ArrayList;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-@SuppressWarnings("all")
+
 /**
- * an instance of a Term for a particular student, as defined by the data passed from Student.
- * @see Stdeunt
+ * Contains information about a particular term&#046; </br><i>Created by: Student</i>
+ * @see Student
  */
+@SuppressWarnings("all")
 public class Term {
 
 	private String id, name, startDate, endDate;
