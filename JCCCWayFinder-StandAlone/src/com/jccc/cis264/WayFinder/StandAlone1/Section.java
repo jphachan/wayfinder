@@ -77,73 +77,140 @@ public class Section{
 	}
 
 	/**
-	 * Sets the section
-	 * @param sectionNumber
+	 * Sets the section number of the current instance&#046 Dynamically called at runtime&#046
+	 * @param sectionNumber sets the Section number
 	 */
 	public void setSectionNumber(int sectionNumber) {
 		SectionNumber = sectionNumber;
 	}
 
+	/**
+	 * gets the CRN Section ID of the course represented by the current instance.
+	 * @return the section ID
+	 */
 	public String getSectionId() {
 		return SectionId;
 	}
 
+	/**
+	 * gets the title of the course represented by the current instance
+	 * @return the course's section title
+	 */
 	public String getSectionTitle() {
 		return SectionTitle;
 	}
 
+	/**
+	 * gets the name of the course represented by the current instance.
+	 * @return the course name
+	 */
 	public String getCourseName() {
 		return CourseName;
 	}
 
+	/**
+	 * gets the description of the course represented by the current instance.
+	 * @return the course description
+	 */
 	public String getCourseDescription() {
 		return CourseDescription;
 	}
 
+	/**
+	 * gets the campus assigned course section number of the course represented by the current instance.
+	 * @return campus section number
+	 */
 	public String getCourseSectionNumber() {
 		return CourseSectionNumber;
 	}
 
+	/**
+	 * gets the date of the first class session of the course represented by the current instance.
+	 * @return the first meeting date as a String
+	 */
 	public String getFirstMeetingDate() {
 		return FirstMeetingDate;
 	}
 
+	/**
+	 * gets the date of the last class session of the course represented by the current instance.
+	 * @return the last meeting date as a String
+	 */
 	public String getLastMeetingDate() {
 		return LastMeetingDate;
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	public String getCeus() {
 		return Ceus;
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	public String getLearningProvider() {
 		return LearningProvider;
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	public String getLearningProviderSideId() {
 		return LearningProviderSiteId;
 	}
-
+	
+	/**
+	 * 
+	 * @return
+	 */
 	public String getPrimarySectionId() {
 		return PrimarySectionId;
 	}
 
+	/**
+	 * gets the total credit hours for the course, as defined by the campus.
+	 * @return course credit hours
+	 */
 	public int getCredits() {
 		return Credits;
 	}
 
+	/**
+	 * gets whether or not the current data is infact an instructor, rather than a student
+	 * @return returns whether the student is an instructor as Boolean
+	 */
 	public Boolean isInstructor() {
 		return IsInstructor;
 	}
 
+	/**
+	 * gets whether or not the current section is an online course.
+	 * @return Boolean whether the course is online
+	 */
 	public Boolean isOnline() {
 		return !isF2F;
 	}
 
+	/**
+	 * returns the primary meeting pattern of the course represented by the current instance
+	 * @return MeetingPattern 0 from JSON input data
+	 * @see MeetingPattern
+	 */
 	public MeetingPattern getMeetingPattern() {
 		return MeetingPattern;
 	}
 
+	/**
+	 * returns the instructor specified by the index (primary instructor is 0)
+	 * @param index - the index of the instructor you wish to view
+	 * @return the Instructor specified by the index
+	 * @see Instructor
+	 */
 	public Instructor getInstructor( int index) {
 		return Instructor.get(index);
 	}
