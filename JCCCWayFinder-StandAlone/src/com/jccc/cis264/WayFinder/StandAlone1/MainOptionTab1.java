@@ -27,39 +27,71 @@ import android.widget.TableRow;
 
 @SuppressWarnings("all")
 public class MainOptionTab1 extends Activity {
+	//the state of all checkboxes
 	boolean sAllState1 = true;
+	
+	//the current activity
 	private Activity myActivity = this;
+	
+	//a dynamically built string of daycodes
 	String DayCodes;
 	@Override
+	
+	//main method
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main_option_tab1);
+		
+		//an arraylist of the selected 
 		final ArrayList<String> Destinations = new ArrayList();
+		//the custom-map intent
 		final Intent startMap = new Intent(this, MainOptions.class);
+		
+	//Perform initialization for the first interface CheckBox
+		//assign the first CheckBox to a variable
 		TableLayout tl = (TableLayout) findViewById(R.id.tableLayout1);
+		//assign the first button to a variable
 		RadioButton defaultrb = (RadioButton) findViewById(R.id.auton_radio_1);
+		//set the default selected radio button
 		defaultrb.setSelected(true);
+		
+		//initialize daycodes string
 		String tempDayCodes = null;
 		
+		
+		//Open the try/catch to catch any exception that can arise, including JSONException
 		try{
+			//initialize the JSON data procided from the login process, and send it to a student object
 			JSONObject json = new JSONObject(this.getIntent().getStringExtra("DATA"));
 			final Student stud = new Student(json);
+			//initialize an array to store created checkboxes, along with information about them
 			final ArrayList<CheckBox> cbA = new ArrayList();
 
 			for(int i = 0; i < stud.getTerm(0).getSections().size(); i++){
 				final int j = i;
 				if(!stud.getTerm(0).getSections().get(i).isOnline()){
 					if(i==0){
+						//set the first TableRow to an object
 						TableRow tr = (TableRow) findViewById(R.id.tableRow1);
+						//set the first RelativeLayout to an object
 						RelativeLayout rl = (RelativeLayout) findViewById(R.id.RelLayoutTable);
+						//set the first CheckBox to an object
 						CheckBox cb = (CheckBox) findViewById(R.id.checkBox1);
-
+						
+						//set the id of the Checkbox dynamically to 1000 + the index of the course.  For instance, 1000 + 0
 						cb.setId(1000 + stud.getTerm(0).getSection(j).getSectionNumber());
+						//set the first Button to an object
 						Button btn = (Button) findViewById(R.id.button2);
+						
+						//create the layout paramters needed for the checkbox and the button
 						RelativeLayout.LayoutParams cbParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
 						RelativeLayout.LayoutParams btnParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
 						btnParams.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, RelativeLayout.TRUE);
+						
+						//set the button text
 						btn.setText("Details");
+						
+						//draw the daycodes as a text string
 						tempDayCodes = "";
 						for(int k = 01; k < 8; k++){
 							if(stud.getTerm(0).getSection(j).getMeetingPattern().getDaysOfWeek().contains(k)){
@@ -92,8 +124,11 @@ public class MainOptionTab1 extends Activity {
 							}
 							
 						}
+						//move the daycode string to a final variable, then reset the daycodes for the next run
 						DayCodes = tempDayCodes;
 						tempDayCodes = "";
+						
+						//set the onclick listener for the button
 						btn.setOnClickListener(new View.OnClickListener() {
 							@Override
 							public void onClick(View v) {
@@ -123,24 +158,40 @@ public class MainOptionTab1 extends Activity {
 										);
 							}
 						});
-						cbParams.addRule(RelativeLayout.CENTER_VERTICAL, RelativeLayout.TRUE);
-						cb.setText(stud.getTerm(0).getSection(j ).getSectionTitle());
-						cbA.add(cb);
 						
+						//create add additional rules to the checkbox params to center it vertically within its own row
+						cbParams.addRule(RelativeLayout.CENTER_VERTICAL, RelativeLayout.TRUE);
+						//set checkbox text to the course name
+						cb.setText(stud.getTerm(0).getSection(j ).getSectionTitle());
+						//add the checkbox to the checkbox array
+						cbA.add(cb);
 					}
 					else{
+						//create a new table row
 						TableRow tr1 = new TableRow(myActivity);
+						//create a new relative layout
 						RelativeLayout rl1 = new RelativeLayout(myActivity);
+						//create a new checkbox
 						CheckBox cb1 = new CheckBox(myActivity);
+						//set the id of the Checkbox dynamically to 1000 + the index of the course.  For instance, 1000 + 0
 						cb1.setId(1000 + stud.getTerm(0).getSection(i).getSectionNumber());
+						//create a new button
 						Button btn1 = new Button(myActivity);
+						//create a new view (Used as a horizontal Separator
 						View v1 = new View(this);
+						//format the vew v1
 						v1.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.FILL_PARENT, 1));
-						v1.setBackgroundColor(Color.rgb(51, 51, 51));	
+						v1.setBackgroundColor(Color.rgb(51, 51, 51));
+						
+						//create layout parameters for the checkbox and button
 						RelativeLayout.LayoutParams cbParams1 = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
 						RelativeLayout.LayoutParams btnParams1 = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
 						btnParams1.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, RelativeLayout.TRUE);
+						
+						//set the title of the button
 						btn1.setText("Details");
+						
+						//create a dynamically generated string of TEXT daycodes
 						for(int k = 01; k < 8; k++){
 							if(stud.getTerm(0).getSection(i).getMeetingPattern().getDaysOfWeek().contains(k)){
 								if(k == 1){
@@ -169,8 +220,12 @@ public class MainOptionTab1 extends Activity {
 								tempDayCodes += "- ";
 							}
 						}
+						
+						//transfer the daycode strong to a final variable
 						final String DayCodes2 = tempDayCodes;
 						tempDayCodes = "";
+						
+						//set the action listener of the details button
 						btn1.setOnClickListener(new View.OnClickListener() {
 							@Override
 							public void onClick(View v) {
@@ -201,13 +256,21 @@ public class MainOptionTab1 extends Activity {
 							}
 						});
 						
+						
+						//center the checkbox vertically in its unique row
 						cbParams1.addRule(RelativeLayout.CENTER_VERTICAL, RelativeLayout.TRUE);
+						
+						//set the checkbox text to the name of the course
 						cb1.setText(stud.getTerm(0).getSection(i).getSectionTitle());
+						
+						//add all dynamically created elements to the activity, using custom layout params where applicable
 						rl1.addView(cb1, cbParams1);
 						rl1.addView(btn1, btnParams1);
 						tr1.addView(rl1);
 						tl.addView(tr1);
 						tl.addView(v1);
+						
+						//add the checkbox to the array of checkboxes
 						cbA.add(cb1);
 					}
 				}
@@ -215,17 +278,23 @@ public class MainOptionTab1 extends Activity {
 			//==============================================================================================================================================================
 
 
-			
+			//make the TakeMeThere button into an object, then specify its 
 			Button takeMeThere = (Button) findViewById(R.id.tmt);		
 			takeMeThere.setOnClickListener(new View.OnClickListener() {
 				@Override
+				
+				//the action performed when clicked
 				public void onClick(View v) {
+					//create an initialize a counter to be used to store the number of checked checkboxes
 					int numChecked = 0;
+					//used if there is a single CheckBox selected;
 					CheckBox tempcheck = null;
+					//the index of the selected CheckBox
 					int checkedIndex = 0;
 					
+					//run a loop through EVERY CheckBox to check the state of each CheckBox
 					for(int i = 0; cbA.size() > i; i++){
-						
+						//if the current CheckBox is checkec, then add it to the temporary CheckBox object, and increase the CB counter by one
 						if(cbA.get(i).isChecked()){
 							 numChecked++;
 							 System.out.println(i);
@@ -233,14 +302,14 @@ public class MainOptionTab1 extends Activity {
 						}
 					}
 					
+					//if only one course is checked
 					if(numChecked == 1){
-						System.out.println(checkedIndex);
-						System.out.println(stud.getTerm(0).getSection(checkedIndex).getCourseDescription());
-						System.out.println(stud.getTerm(0).getSection(checkedIndex).getMeetingPattern().getBuildingId());
-						System.out.println(findLatLngByCode(stud.getTerm(0).getSection(checkedIndex).getMeetingPattern().getBuildingId()));
+						//create a new intent referencing the device's Google Navigation package, supplying the app query with the LatLng of the selected course
 						Intent intent = new Intent(android.content.Intent.ACTION_VIEW, Uri.parse("google.navigation:q=" + findLatLngByCode(stud.getTerm(0).getSection(checkedIndex).getMeetingPattern().getBuildingId()).latitude + "," + findLatLngByCode(stud.getTerm(0).getSection(checkedIndex).getMeetingPattern().getBuildingId()).longitude + "&mode=w"));
+						//run the intent, launching Google Navigation outside of this application
 						myActivity.startActivity(intent);	
 					}
+					//if no course is selected
 					else if(numChecked == 0){
 						//create a new AlertDialog
 						AlertDialog.Builder Alert  = new AlertDialog.Builder(myActivity);
@@ -265,6 +334,7 @@ public class MainOptionTab1 extends Activity {
 						}
 								);
 					}
+					//if more than one course is selected
 					else{
 						//create a new AlertDialog
 						AlertDialog.Builder Alert  = new AlertDialog.Builder(myActivity);
@@ -292,21 +362,54 @@ public class MainOptionTab1 extends Activity {
 					
 				}
 			});
-
 			
+			//make the TakeMeThere button into an object, then specify its 
+			Button ShowMeAMap = (Button) findViewById(R.id.smam);		
+			takeMeThere.setOnClickListener(new View.OnClickListener() {
+				@Override
+				
+				//the action performed when clicked
+				public void onClick(View v) {
+
+					//run a loop through EVERY CheckBox to check the state of each CheckBox
+					for(int i = 0; cbA.size() > i; i++){
+						//if the current CheckBox is checkec, then add it to the temporary CheckBox object, and increase the CB counter by one
+						if(cbA.get(i).isChecked()){
+							
+						}
+					}
+					
+					//if only one course is checked
+					if(numChecked == 0){
+
+					}
+					//if no course is selected
+					else{
+						
+					}
+
+					
+				}
+			});
+
+			//Select or Unselect all
 			final Button sAll = (Button) findViewById(R.id.sAll);		
 			sAll.setOnClickListener(new View.OnClickListener() {
 				
 				@Override
 				public void onClick(View v) {
+					
+					//when the button is clicked, run through and set EVERY checkbox to the state of sAllState1
 					for(int i = 0; cbA.size() > i; i++){
 						cbA.get(i).setChecked(sAllState1);
 					}
 					
+					//if the last run was to select all, then set the next run to deselect all
 					if(sAllState1 == true){
 						sAll.setText("Deselect All");
 						sAllState1 = false;
 					}
+					//if the last run was to deselect all, then set the next run to select all
 					else{
 						sAll.setText("Select All");
 						sAllState1 = true;
@@ -316,6 +419,7 @@ public class MainOptionTab1 extends Activity {
 			});
 			
 			//==============================================================================================================================================================
+			//if an unhandled exception occures, print the trace to the debugger
 		}catch(Exception e){
 			e.printStackTrace();
 		}
@@ -328,6 +432,7 @@ public class MainOptionTab1 extends Activity {
 		return true;
 	}
 	
+	//take an input building ID and output a LatLng
 	private LatLng findLatLngByCode(String code){
 		 LatLng CC = new LatLng(38.9252624, -94.7279145),
 				LIB = new LatLng(38.924214, -94.72767190000002),
