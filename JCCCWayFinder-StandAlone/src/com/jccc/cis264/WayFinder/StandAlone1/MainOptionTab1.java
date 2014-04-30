@@ -36,8 +36,6 @@ public class MainOptionTab1 extends Activity {
 	//a dynamically built string of daycodes
 	String DayCodes;
 	@Override
-	
-	//main method
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main_option_tab1);
@@ -116,11 +114,11 @@ public class MainOptionTab1 extends Activity {
 								else if(k == 7){
 									tempDayCodes += "S ";
 								}
-								System.out.println(tempDayCodes);
+								
 							}
 							else{
 								tempDayCodes += "- ";
-								System.out.println(tempDayCodes);
+								
 							}
 							
 						}
@@ -294,10 +292,9 @@ public class MainOptionTab1 extends Activity {
 					
 					//run a loop through EVERY CheckBox to check the state of each CheckBox
 					for(int i = 0; cbA.size() > i; i++){
-						//if the current CheckBox is checkec, then add it to the temporary CheckBox object, and increase the CB counter by one
+						//if the current CheckBox is checked, then add it to the temporary CheckBox object, and increase the CB counter by one
 						if(cbA.get(i).isChecked()){
 							 numChecked++;
-							 System.out.println(i);
 							 checkedIndex = cbA.get(i).getId() - 1000;
 						}
 					}
@@ -365,30 +362,35 @@ public class MainOptionTab1 extends Activity {
 			
 			//make the TakeMeThere button into an object, then specify its 
 			Button ShowMeAMap = (Button) findViewById(R.id.smam);		
-			takeMeThere.setOnClickListener(new View.OnClickListener() {
-				@Override
-				
+			ShowMeAMap.setOnClickListener(new View.OnClickListener() {
 				//the action performed when clicked
+				@Override
 				public void onClick(View v) {
-
+					int numChecked = 0;
+					Destinations.clear();
 					//run a loop through EVERY CheckBox to check the state of each CheckBox
 					for(int i = 0; cbA.size() > i; i++){
-						//if the current CheckBox is checkec, then add it to the temporary CheckBox object, and increase the CB counter by one
+						//if the current CheckBox is Checked, then increase the Checked counter by one
 						if(cbA.get(i).isChecked()){
-							
+							numChecked++;
 						}
-					}
-					
+					}	
 					//if only one course is checked
 					if(numChecked == 0){
-
 					}
 					//if no course is selected
-					else{
-						
+					else{	
+						for(int i = 0; cbA.size() > i; i++){
+							//if the current CheckBox is checkec, then add it to the temporary CheckBox object, and increase the CB counter by one
+							if(cbA.get(i).isChecked()){
+								Destinations.add(stud.getTerm(0).getSection(cbA.get(i).getId() - 1000).getMeetingPattern().getBuildingId());
+							}
+						}	
+						System.out.println(Destinations);
+						Intent Map = new Intent(myActivity, MapActivity.class);
+						Map.putExtra("Points", Destinations);
+						myActivity.startActivity(Map);
 					}
-
-					
 				}
 			});
 

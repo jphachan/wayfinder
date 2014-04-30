@@ -55,6 +55,7 @@ public class MapActivity extends Activity {
 			map.moveCamera(CameraUpdateFactory.newLatLngZoom(JcccCenter, 15));
 
 			addMarker(map, JcccCenter, "JCCC");
+			
 			addMarker(map, CC, "Carlson Center");
 			addMarker(map, OCB, "Office and Classroom Building");
 			addMarker(map, RC, "Regnier Center");

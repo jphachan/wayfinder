@@ -33,7 +33,6 @@ public class Term {
 				if(data.getJSONArray("sections").getJSONObject(i).length() > 0){
 					section.add(new Section(data.getJSONArray("sections").getJSONObject(i)));
 					section.get(i).setSectionNumber(i);
-					System.out.println(i);
 				}
 			}
 		}
