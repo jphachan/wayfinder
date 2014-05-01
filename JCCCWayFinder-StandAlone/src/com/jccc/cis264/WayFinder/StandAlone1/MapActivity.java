@@ -55,7 +55,6 @@ public class MapActivity extends Activity {
 			map.moveCamera(CameraUpdateFactory.newLatLngZoom(JcccCenter, 15));
 
 			addMarker(map, JcccCenter, "JCCC");
-			
 			addMarker(map, CC, "Carlson Center");
 			addMarker(map, OCB, "Office and Classroom Building");
 			addMarker(map, RC, "Regnier Center");
@@ -78,14 +77,14 @@ public class MapActivity extends Activity {
 			// Construct a CameraPosition focusing on Mountain View and animate the camera to that position.
 			CameraPosition cameraPosition = new CameraPosition.Builder()
 			.target(CC)      // Sets the center of the map to CC
-			.zoom(13)        // Sets the zoom
+			.zoom(16)        // Sets the zoom
 			.build();        // Creates a CameraPosition from the builder
 			map.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition), 2000, null);
 
 			//End Map Application~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 		}
 	}
-
+ 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
