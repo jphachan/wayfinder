@@ -67,23 +67,24 @@ public class MainOptionTab3 extends Activity {
 			//initialize an array to store created checkboxes, along with information about them
 			final ArrayList<CheckBox> cbA = new ArrayList();
 
+			//set the first TableRow to an object
+			TableRow tr = (TableRow) findViewById(R.id.tableRow2);
+			//set the first RelativeLayout to an object
+			RelativeLayout rl = (RelativeLayout) findViewById(R.id.RelLayoutTable2);
+			//set the first CheckBox to an object
+			CheckBox cb = (CheckBox) findViewById(R.id.checkBox2);
+			//set the first Button to an object
+			Button btn = (Button) findViewById(R.id.button4);
+			
 			for(int i = 0; i < stud.getTerm(0).getSections().size(); i++){
 				final int j = i;
 
 				if(!stud.getTerm(0).getSections().get(i).isOnline()){
 					if(stud.getTerm(0).getSection(i).getMeetingPattern().getDaysOfWeek().contains(Calendar.getInstance().get(Calendar.DAY_OF_WEEK))){
 						if(i==0){
-							//set the first TableRow to an object
-							TableRow tr = (TableRow) findViewById(R.id.tableRow2);
-							//set the first RelativeLayout to an object
-							RelativeLayout rl = (RelativeLayout) findViewById(R.id.RelLayoutTable2);
-							//set the first CheckBox to an object
-							CheckBox cb = (CheckBox) findViewById(R.id.checkBox2);
 
 							//set the id of the Checkbox dynamically to 1000 + the index of the course.  For instance, 1000 + 0
-							cb.setId(1000 + stud.getTerm(0).getSection(j).getSectionNumber());
-							//set the first Button to an object
-							Button btn = (Button) findViewById(R.id.button4);
+							cb.setId(1000 + stud.getTerm(0).getSection(j).getSectionNumber());  
 
 							//create the layout paramters needed for the checkbox and the button
 							RelativeLayout.LayoutParams cbParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
@@ -280,6 +281,9 @@ public class MainOptionTab3 extends Activity {
 			}
 			//==============================================================================================================================================================
 
+			if(cbA.size() == 0){
+				
+			}
 
 			//make the TakeMeThere button into an object, then specify its 
 			Button takeMeThere = (Button) findViewById(R.id.tmt2);		
