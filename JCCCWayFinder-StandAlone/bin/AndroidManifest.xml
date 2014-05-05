@@ -35,7 +35,7 @@
             android:value="AIzaSyCStDQjOoxy6p8thijvASmVxkUE5h--MjY" />
 
         <activity
-            android:name="com.jccc.cis264.WayFinder.StandAlone1.Login"
+            android:name="com.jccc.cis264.WayFinder.StandAlone.Login"
             android:label="@string/app_name"
             android:screenOrientation="portrait" >
             <intent-filter>
@@ -45,27 +45,27 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.jccc.cis264.WayFinder.StandAlone1.MainOptions"
+            android:name="com.jccc.cis264.WayFinder.StandAlone.MainOptions"
             android:label="@string/title_activity_main_options1" 
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="com.jccc.cis264.WayFinder.StandAlone1.MapActivity"
+            android:name="com.jccc.cis264.WayFinder.StandAlone.MapActivity"
             android:label="@string/title_activity_map" 
-            android:screenOrientation="portrait" >
+            android:screenOrientation="landscape" >
         </activity>
         <activity
-            android:name="com.jccc.cis264.WayFinder.StandAlone1.MainOptionTab1"
+            android:name="com.jccc.cis264.WayFinder.StandAlone.MainOptionTab1"
             android:label="@string/title_activity_main_option_tab1" 
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="com.jccc.cis264.WayFinder.StandAlone1.MainOptionTab2"
+            android:name="com.jccc.cis264.WayFinder.StandAlone.MainOptionTab2"
             android:label="@string/title_activity_main_option_tab2" 
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="com.jccc.cis264.WayFinder.StandAlone1.MainOptionTab3"
+            android:name="com.jccc.cis264.WayFinder.StandAlone.MainOptionTab3"
             android:label="@string/title_activity_main_option_tab3" 
             android:screenOrientation="portrait" >
         </activity>
