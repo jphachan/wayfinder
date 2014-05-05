@@ -252,6 +252,7 @@ containing a value of this type.
         public static final int checkBox2=0x7f050028;
         public static final int hybrid=0x7f050004;
         public static final int map=0x7f050032;
+        public static final int noCoursesTab3=0x7f05001d;
         public static final int none=0x7f050000;
         public static final int normal=0x7f050001;
         public static final int relativeLayout1=0x7f05000c;
@@ -272,7 +273,6 @@ containing a value of this type.
         public static final int terrain=0x7f050003;
         public static final int textView1=0x7f050009;
         public static final int textView2=0x7f05001b;
-        public static final int textView3=0x7f05001d;
         public static final int textView4=0x7f050031;
         public static final int tmt=0x7f050016;
         public static final int tmt2=0x7f05002c;

@@ -25,6 +25,7 @@ import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
+import android.widget.TextView;
 
 
 @SuppressWarnings("all")
@@ -80,8 +81,9 @@ public class MainOptionTab3 extends Activity {
 				final int j = i;
 
 				if(!stud.getTerm(0).getSections().get(i).isOnline()){
+					//if(stud.getTerm(0).getSection(i).getMeetingPattern().getDaysOfWeek().contains(9)){
 					if(stud.getTerm(0).getSection(i).getMeetingPattern().getDaysOfWeek().contains(Calendar.getInstance().get(Calendar.DAY_OF_WEEK))){
-						if(i==0){
+						if(i==0 || cbA.size() == 0){
 
 							//set the id of the Checkbox dynamically to 1000 + the index of the course.  For instance, 1000 + 0
 							cb.setId(1000 + stud.getTerm(0).getSection(j).getSectionNumber());  
@@ -281,9 +283,7 @@ public class MainOptionTab3 extends Activity {
 			}
 			//==============================================================================================================================================================
 
-			if(cbA.size() == 0){
-				
-			}
+
 
 			//make the TakeMeThere button into an object, then specify its 
 			Button takeMeThere = (Button) findViewById(R.id.tmt2);		
@@ -429,6 +429,16 @@ public class MainOptionTab3 extends Activity {
 				}
 			});
 
+			if(cbA.size() == 0){
+				RelativeLayout rl2 = (RelativeLayout) findViewById(R.id.relativeLayout2);
+				TextView noCourses = (TextView) findViewById(R.id.noCoursesTab3);
+				rl2.setVisibility(rl2.INVISIBLE);
+				sAll.setVisibility(sAll.INVISIBLE);
+				takeMeThere.setEnabled(false);
+				ShowMeAMap.setEnabled(false);
+				noCourses.setVisibility(noCourses.VISIBLE);	
+			}
+			
 			//==============================================================================================================================================================
 			//if an unhandled exception occures, print the trace to the debugger
 		}catch(Exception e){

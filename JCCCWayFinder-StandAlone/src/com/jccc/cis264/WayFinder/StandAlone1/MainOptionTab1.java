@@ -23,6 +23,7 @@ import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
+import android.widget.TextView;
 
 
 @SuppressWarnings("all")
@@ -419,6 +420,16 @@ public class MainOptionTab1 extends Activity {
 					
 				}
 			});
+			
+			if(cbA.size() == 0){
+				RelativeLayout rl2 = (RelativeLayout) findViewById(R.id.relativeLayout1);
+				TextView noCourses = (TextView) findViewById(R.id.noCoursesTab3);
+				rl2.setVisibility(rl2.INVISIBLE);
+				sAll.setVisibility(sAll.INVISIBLE);
+				takeMeThere.setEnabled(false);
+				ShowMeAMap.setEnabled(false);
+				noCourses.setVisibility(noCourses.VISIBLE);	
+			}
 			
 			//==============================================================================================================================================================
 			//if an unhandled exception occures, print the trace to the debugger
