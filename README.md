@@ -1,4 +1,0 @@
-wayfinder
-=========
-
-jccc wayfinder app
