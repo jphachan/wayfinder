@@ -21,6 +21,7 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class Login extends Activity {
 	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -150,7 +151,19 @@ class LoginRequest extends AsyncTask<String, Integer, Integer> {
 			URL loginserver = null;
 			Login.pro_dialog.incrementProgressBy(1);
 			System.out.println("PreURL");
-			loginserver = new URL("http://jcccwayfinder.byethost5.com/DatabaseHandler.php?username=" + username + "&password=" + password);
+			BufferedReader in2 = null;
+			try{
+				loginserver = new URL("http://jcccwayfinder.byethost5.com/DatabaseHandler.php?username=" + username + "&password=" + password);
+			}
+			catch(Exception e){
+				try{
+					loginserver = new URL("http://jcccwayfinder.byethost14.com/DatabaseHandler.php?username=" + username + "&password=" + password);
+				}catch(Exception e1){
+					Toast t = new Toast(Login.MyActivity);
+					t.setText("Could not connect.");
+				}
+			}
+
 			System.out.println("PostURL");
 			Login.pro_dialog.incrementProgressBy(1);
 
@@ -161,7 +174,7 @@ class LoginRequest extends AsyncTask<String, Integer, Integer> {
 				}
 			});
 
-			loginserver.openConnection().setReadTimeout(5000);
+			loginserver.openConnection().setReadTimeout(2500);
 			Login.pro_dialog.incrementProgressBy(1);
 
 			Login.MyActivity.runOnUiThread(new Runnable() {
@@ -174,7 +187,7 @@ class LoginRequest extends AsyncTask<String, Integer, Integer> {
 			//Get information from the API
 			Login.pro_dialog.incrementProgressBy(1);
 
-			BufferedReader in2 = null;
+			
 			//Read the response data	    	MainActivity.pro_dialog.incrementProgressBy(1);
 			in2 = new BufferedReader(new InputStreamReader(loginserver.openConnection().getInputStream()));
 			Login.pro_dialog.incrementProgressBy(1);
@@ -376,6 +389,7 @@ class LoginRequest extends AsyncTask<String, Integer, Integer> {
 				//End of alert dialog
 			}
 		}catch(Exception e){
+			Login.pro_dialog.dismiss();
 			e.printStackTrace();
 		}
 		return null;
